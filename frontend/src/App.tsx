@@ -1,10 +1,19 @@
+import { useRef, useState } from 'react'
 import './App.css'
 import FuzzyText from '@/components/FuzzyText'
+import GradientText from '@/components/GradientText'
 import GradientWaves from '@/components/GradientWaves'
 import Particles from '@/components/Particles'
+import HarCaseStudy from '@/components/har/HarCaseStudy'
 import meImage from '@/assets/me.png'
 
 const navItems = ['ABOUT', 'PROJECTS', 'EXPERIENCE', 'LAB', 'CHAT', 'CONTACT']
+const projectItems = [
+  'ACTIVITY RECOGNITION',
+  'CHATBOT',
+  'THIS PORTFOLIO',
+  'KUMO MOCHI',
+]
 const statusRows = [
   { key: 'name', value: 'Pavel Jermolajev', hint: 'People refer to me as Pav' },
   { key: 'location', value: 'Brighton, UK' },
@@ -16,6 +25,20 @@ const statusRows = [
 ]
 
 function App() {
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0)
+  const projectDisplayRef = useRef<HTMLDivElement>(null)
+
+  const handleProjectTabClick = (index: number) => {
+    setActiveProjectIndex(index)
+
+    window.requestAnimationFrame(() => {
+      projectDisplayRef.current?.scrollIntoView({
+        behavior: 'auto',
+        block: 'start',
+      })
+    })
+  }
+
   return (
     <main className="app-shell">
     <div
@@ -137,6 +160,61 @@ function App() {
 
         <div className="about-image-wrap">
           <img className="about-image" src={meImage} alt="Pavel Jermolajev" />
+        </div>
+      </div>
+
+      <div className="about-actions geo-regular">
+        <button className="about-action-button" type="button">
+          [ EXPLORE MY WORK ]
+        </button>
+        <button className="about-action-button" type="button">
+          [ ASK MY AI ↗ ]
+        </button>
+      </div>
+    </section>
+
+    <section className="projects-section" id="projects" aria-label="Projects">
+      <div className="projects-atmosphere" aria-hidden="true" />
+      <div className="projects-content">
+        <GradientText
+          colors={["#e207ff", "#f727a0", "#755199"]}
+          animationSpeed={2.5}
+          showBorder
+          className="projects-gradient-title"
+        >
+          <span>Project Lab</span>
+          <span>Selected Work</span>
+        </GradientText>
+
+        <p className="projects-subtitle">
+          Four projects that best represent how I build, experiment and solve problems.
+        </p>
+
+        <div className="projects-switcher">
+          <nav className="project-tabs" aria-label="Project selector">
+            {projectItems.map((item, index) => (
+              <button
+                className={`project-tab ${activeProjectIndex === index ? 'is-active' : ''}`}
+                type="button"
+                key={item}
+                aria-pressed={activeProjectIndex === index}
+                onClick={() => handleProjectTabClick(index)}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+        </div>
+
+        <div className="project-display" ref={projectDisplayRef}>
+          {activeProjectIndex === 0 ? (
+            <HarCaseStudy />
+          ) : (
+            <div className="project-placeholder">
+              <p>{projectItems[activeProjectIndex]}</p>
+              <span>Case study coming next.</span>
+            </div>
+          )}
         </div>
       </div>
     </section>

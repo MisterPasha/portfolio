@@ -257,6 +257,250 @@
     -24px 24px 0 rgba(255, 3, 145, 0.12);
 }
 
+.about-actions {
+  position: absolute;
+  bottom: clamp(18px, 3vh, 34px);
+  left: max(24px, calc((100vw - 1180px) / 2));
+  z-index: 3;
+  display: flex;
+  justify-content: flex-start;
+  gap: clamp(16px, 3vw, 34px);
+  width: min(92vw, 780px);
+  pointer-events: auto;
+}
+
+.about-action-button {
+  min-height: 46px;
+  padding: 11px clamp(18px, 3vw, 30px);
+  color: rgb(209, 207, 209);
+  font: inherit;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  letter-spacing: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.about-action-button:hover,
+.about-action-button:focus-visible {
+  color: #6dce5c;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.about-action-button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 5px;
+}
+
+.projects-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    #0b0a0a;
+  background-size: 96px 96px, 96px 96px, auto;
+  color: rgb(209, 207, 209);
+}
+
+.projects-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(226, 7, 255, 0.18), transparent 34%),
+    radial-gradient(circle at 82% 62%, rgba(247, 39, 160, 0.14), transparent 36%);
+  opacity: 0.85;
+}
+
+.projects-section::after {
+  content: "";
+  position: absolute;
+  inset: clamp(22px, 4vw, 56px);
+  border: 1px solid rgba(209, 207, 209, 0.12);
+  pointer-events: none;
+}
+
+.projects-atmosphere {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: min(72vw, 900px);
+  height: min(72vw, 900px);
+  border: 1px solid rgba(226, 7, 255, 0.12);
+  border-radius: 50%;
+  box-shadow:
+    0 0 120px rgba(226, 7, 255, 0.08),
+    inset 0 0 90px rgba(117, 81, 153, 0.08);
+  transform: translateX(-50%);
+}
+
+.projects-content {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100vw - 48px));
+  margin: 0 auto;
+  padding: clamp(110px, 16vh, 180px) 0;
+}
+
+.projects-gradient-title {
+  margin: 0;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(3.2rem, 8vw, 8.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.projects-gradient-title .text-content {
+  display: grid;
+  gap: 0.18em;
+}
+
+.projects-gradient-title.with-border {
+  padding: clamp(0.55rem, 1.2vw, 0.9rem) clamp(0.8rem, 2vw, 1.35rem);
+  border-radius: 8px;
+}
+
+.projects-gradient-title .gradient-overlay::before {
+  background-color: rgba(11, 10, 10, 0.86);
+}
+
+.projects-subtitle {
+  max-width: 640px;
+  margin: clamp(28px, 4vw, 42px) auto 0;
+  color: rgba(226, 224, 226, 0.78);
+  font-family: "Quantico", sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.7;
+  text-align: center;
+}
+
+.projects-switcher {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(44px, 7vw, 82px);
+  font-family: "Geo", sans-serif;
+}
+
+.project-tabs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 22px);
+  max-width: 980px;
+  padding: 10px;
+}
+
+.project-tab {
+  position: relative;
+  min-height: 44px;
+  padding: 10px clamp(14px, 2vw, 24px);
+  color: rgba(209, 207, 209, 0.72);
+  font: inherit;
+  font-size: clamp(0.95rem, 1.35vw, 1.2rem);
+  letter-spacing: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    text-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.project-tab::before,
+.project-tab::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition:
+    opacity 180ms ease,
+    width 180ms ease;
+}
+
+.project-tab::before {
+  bottom: 5px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f727a0, #39ff14, transparent);
+}
+
+.project-tab::after {
+  bottom: -8px;
+  width: 38px;
+  height: 14px;
+  background: radial-gradient(ellipse, rgba(247, 39, 160, 0.28), transparent 68%);
+  filter: blur(6px);
+}
+
+.project-tab:hover,
+.project-tab:focus-visible {
+  color: rgb(209, 207, 209);
+  transform: translateY(-2px);
+}
+
+.project-tab.is-active {
+  color: #ffffff;
+  font-size: clamp(1.08rem, 1.55vw, 1.35rem);
+  text-shadow:
+    0 0 14px rgba(247, 39, 160, 0.44),
+    0 0 24px rgba(57, 255, 20, 0.16);
+}
+
+.project-tab.is-active::before {
+  width: 82%;
+  opacity: 1;
+}
+
+.project-tab.is-active::after {
+  opacity: 1;
+}
+
+.project-tab:focus-visible {
+  outline: 1px solid rgba(209, 207, 209, 0.72);
+  outline-offset: 6px;
+}
+
+.project-display {
+  margin-top: clamp(52px, 8vw, 96px);
+}
+
+.project-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 360px;
+  color: rgba(209, 207, 209, 0.72);
+  font-family: "Quantico", sans-serif;
+  text-align: center;
+  border: 1px solid rgba(209, 207, 209, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.project-placeholder p {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.8rem, 4vw, 4rem);
+}
+
+.project-placeholder span {
+  color: rgba(209, 207, 209, 0.66);
+}
+
 
 .hero-nav-button:hover,
 .hero-nav-button:focus-visible {
@@ -316,5 +560,36 @@
   .about-image-wrap {
     justify-self: center;
     width: min(78vw, 340px);
+  }
+
+  .about-actions {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    flex-wrap: wrap;
+    width: min(100vw - 32px, 680px);
+    margin: 0 auto 40px;
+    transform: none;
+  }
+
+  .about-action-button {
+    flex: 1 1 230px;
+  }
+
+  .projects-content {
+    width: min(100vw - 32px, 680px);
+    padding: 96px 0;
+  }
+
+  .projects-gradient-title {
+    font-size: clamp(2.7rem, 14vw, 5.8rem);
+  }
+
+  .projects-section::after {
+    inset: 16px;
+  }
+
+  .projects-switcher {
+    margin-top: 38px;
   }
 }

@@ -1,0 +1,3990 @@
+.har-case-study {
+  position: relative;
+  display: grid;
+  gap: clamp(72px, 10vw, 132px);
+  margin-top: clamp(72px, 10vw, 120px);
+  color: rgb(209, 207, 209);
+  font-family: "Quantico", sans-serif;
+}
+
+.har-case-study::before {
+  content: "";
+  position: absolute;
+  top: 9%;
+  right: -12%;
+  width: min(42vw, 560px);
+  height: min(42vw, 560px);
+  border: 1px solid rgba(57, 255, 20, 0.12);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.08), transparent 62%);
+  pointer-events: none;
+}
+
+.har-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+  align-items: center;
+  gap: clamp(42px, 8vw, 112px);
+  min-height: clamp(720px, 90vh, 920px);
+  padding: clamp(36px, 7vw, 86px) 0;
+}
+
+.har-hero::before {
+  content: "";
+  position: absolute;
+  inset: 8% -6% 2%;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 44%, black, transparent 72%);
+  pointer-events: none;
+}
+
+.har-hero-copy,
+.har-hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.har-hero-eyebrow,
+.har-hero-label {
+  margin: 0;
+  font-family: "Geo", sans-serif;
+  letter-spacing: 0;
+}
+
+.har-hero-eyebrow {
+  color: #8ee8a0;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+}
+
+.har-hero-label {
+  margin-top: 12px;
+  color: rgba(209, 207, 209, 0.58);
+  font-size: clamp(0.82rem, 1.1vw, 0.98rem);
+}
+
+.har-hero h2 {
+  max-width: 860px;
+  margin: clamp(26px, 5vw, 48px) 0 0;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.6rem, 3.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: 0;
+}
+
+.har-hero h2 span {
+  display: block;
+}
+
+.har-hero-summary {
+  max-width: 650px;
+  margin: clamp(28px, 4vw, 42px) 0 0;
+  color: rgba(226, 224, 226, 0.78);
+  font-size: clamp(1.05rem, 1.6vw, 1.24rem);
+  line-height: 1.75;
+}
+
+.har-hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(30px, 5vw, 52px);
+}
+
+.har-hero-facts span {
+  padding: 9px 12px;
+  color: rgba(244, 239, 245, 0.86);
+  font-family: "Geo", sans-serif;
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.42);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.har-hero-cta {
+  margin-top: clamp(34px, 5vw, 58px);
+  padding: 12px 0;
+  color: rgb(209, 207, 209);
+  font-family: "Geo", sans-serif;
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  letter-spacing: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.har-hero-cta:hover,
+.har-hero-cta:focus-visible {
+  color: #39ff14;
+  transform: translateY(3px);
+}
+
+.har-hero-cta:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 6px;
+}
+
+.har-hero-visual {
+  justify-self: center;
+  width: min(100%, 460px);
+  aspect-ratio: 0.74;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 720ms ease,
+    transform 720ms ease;
+}
+
+.har-hero.is-visible .har-hero-visual {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.har-human-outline {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.har-human-line {
+  fill: none;
+  stroke: rgba(209, 207, 209, 0.68);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.har-human-line.faint {
+  stroke: rgba(209, 207, 209, 0.46);
+}
+
+.har-limb {
+  fill: rgba(209, 207, 209, 0.026);
+  stroke: rgba(209, 207, 209, 0.62);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.har-limb.faint {
+  fill: rgba(209, 207, 209, 0.018);
+  stroke: rgba(209, 207, 209, 0.46);
+}
+
+.har-human-signal {
+  fill: none;
+  stroke: rgba(247, 39, 160, 0.58);
+  stroke-dasharray: 6 10;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.har-hero-sensor {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 22px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.72);
+  transition:
+    opacity 320ms ease,
+    transform 320ms ease,
+    filter 180ms ease;
+  transition-delay: calc(var(--sensor-index) * 80ms + 520ms);
+}
+
+.har-hero.is-visible .har-hero-sensor {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.har-hero-sensor::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border: 1px solid rgba(57, 255, 20, 0.5);
+  background: rgba(11, 10, 10, 0.78);
+}
+
+.har-hero-sensor::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(57, 255, 20, 0.18);
+  border-radius: 50%;
+  animation: harSensorPulse 1800ms ease-in-out infinite;
+  animation-delay: 0ms;
+}
+
+.har-hero-sensor i {
+  position: relative;
+  z-index: 1;
+  width: 6px;
+  height: 6px;
+  background: #39ff14;
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.64);
+}
+
+.har-hero.is-desynced .har-hero-sensor.will-drift::after {
+  animation-delay: 180ms;
+}
+
+.har-hero.is-desynced .har-hero-sensor.will-drift i {
+  animation: harCoreNudge 1800ms ease-in-out infinite;
+}
+
+.har-hero-sensor em {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  width: max-content;
+  padding: 6px 8px;
+  color: rgba(209, 207, 209, 0.72);
+  font-family: "Geo", sans-serif;
+  font-size: 0.68rem;
+  font-style: normal;
+  background: rgba(24, 22, 25, 0.92);
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 6px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.har-hero-sensor:hover {
+  filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.46));
+  transition-delay: 0ms;
+}
+
+.har-hero-sensor:hover em {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@keyframes harSensorPulse {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: scale(0.82);
+  }
+
+  50% {
+    opacity: 0.58;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes harCoreNudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(1px);
+  }
+}
+
+.sensor-drift-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1fr);
+  gap: clamp(42px, 8vw, 104px);
+  align-items: center;
+  min-height: clamp(720px, 88vh, 920px);
+  padding: clamp(56px, 8vw, 92px) 0;
+}
+
+.sensor-drift-section::before {
+  content: "";
+  position: absolute;
+  inset: 12% -5%;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 64% 48%, black, transparent 72%);
+  pointer-events: none;
+}
+
+.sensor-drift-copy,
+.drift-lab,
+.drift-punchline {
+  position: relative;
+  z-index: 1;
+}
+
+.sensor-drift-copy h2 {
+  max-width: 760px;
+  margin: 0 0 30px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.5rem, 5vw, 5.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.sensor-drift-copy p:not(.har-section-label) {
+  max-width: 650px;
+  color: rgba(226, 224, 226, 0.78);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.82;
+}
+
+.drift-lab {
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background: rgba(14, 12, 16, 0.58);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(10px);
+}
+
+.drift-readout {
+  display: grid;
+  gap: 8px;
+  margin-bottom: clamp(26px, 4vw, 44px);
+}
+
+.drift-readout span,
+.drift-control > span {
+  color: rgba(209, 207, 209, 0.64);
+  font-family: "Geo", sans-serif;
+  font-size: 0.92rem;
+}
+
+.drift-readout strong {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.4rem, 6vw, 5.4rem);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.timeline-stage {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 0 46px;
+}
+
+.alignment-guides {
+  position: absolute;
+  inset: 16px 0 58px 104px;
+  opacity: 0.34;
+}
+
+.alignment-guides span {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.06),
+    rgba(247, 39, 160, 0.72),
+    rgba(255, 255, 255, 0.06)
+  );
+  transform: translateX(-50%);
+}
+
+.timeline-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  margin: 26px 0;
+}
+
+.timeline-label {
+  color: rgba(209, 207, 209, 0.7);
+  font-family: "Geo", sans-serif;
+  font-size: 0.88rem;
+}
+
+.timeline-track {
+  position: relative;
+  height: 34px;
+  transition: transform 90ms linear;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #39ff14, #f727a0);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.timeline-track i {
+  position: absolute;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(57, 255, 20, 0.72);
+  background: #0b0a0a;
+  box-shadow: inset 0 0 0 3px #39ff14;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.72);
+}
+
+.sensor-drift-section.is-visible .timeline-track::before {
+  animation: drawSignal 620ms ease forwards;
+}
+
+.sensor-drift-section.is-visible .timeline-track i {
+  animation: showSample 280ms ease forwards;
+  animation-delay: calc(var(--sample-index, 0) * 60ms + 320ms);
+}
+
+.timeline-track i:nth-child(1) {
+  --sample-index: 0;
+}
+
+.timeline-track i:nth-child(2) {
+  --sample-index: 1;
+}
+
+.timeline-track i:nth-child(3) {
+  --sample-index: 2;
+}
+
+.timeline-track i:nth-child(4) {
+  --sample-index: 3;
+}
+
+.timeline-track i:nth-child(5) {
+  --sample-index: 4;
+}
+
+.timeline-track i:nth-child(6) {
+  --sample-index: 5;
+}
+
+.timeline-helper {
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  color: rgba(247, 39, 160, 0.84);
+  font-family: "Geo", sans-serif;
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.timeline-helper.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.drift-control {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.drift-control input {
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  accent-color: #39ff14;
+  cursor: pointer;
+}
+
+.drift-control em {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+  font-size: 0.82rem;
+  font-style: normal;
+}
+
+.drift-note {
+  max-width: none;
+  margin: 20px 0 0;
+  color: rgba(209, 207, 209, 0.52);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.drift-punchline {
+  grid-column: 1 / -1;
+  max-width: 980px;
+  margin: clamp(14px, 4vw, 34px) auto 0;
+  color: rgba(244, 239, 245, 0.9);
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.7rem, 3.6vw, 4rem);
+  line-height: 1.18;
+  text-align: center;
+}
+
+.drift-punchline span {
+  display: block;
+  margin-top: 10px;
+}
+
+.drift-punchline strong {
+  color: #39ff14;
+  font-weight: 700;
+}
+
+.har-system-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(420px, 1fr);
+  gap: clamp(38px, 7vw, 96px);
+  align-items: center;
+  min-height: clamp(820px, 92vh, 1060px);
+  padding: clamp(64px, 9vw, 110px) 0;
+}
+
+.har-system-section::before {
+  content: "";
+  position: absolute;
+  inset: 4% -8%;
+  background:
+    radial-gradient(circle at 74% 28%, rgba(247, 39, 160, 0.11), transparent 34%),
+    radial-gradient(circle at 18% 74%, rgba(57, 255, 20, 0.07), transparent 30%);
+  pointer-events: none;
+}
+
+.har-system-copy,
+.har-system-photo-panel,
+.har-pipeline,
+.hardware-timing,
+.system-transition {
+  position: relative;
+  z-index: 1;
+}
+
+.har-system-copy h2,
+.hardware-timing h3,
+.system-transition p {
+  margin: 0;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.har-system-copy h2 {
+  max-width: 760px;
+  font-size: clamp(2.5rem, 5.4vw, 5.9rem);
+  line-height: 1;
+}
+
+.har-system-copy p,
+.hardware-timing p {
+  max-width: 650px;
+  color: rgba(226, 224, 226, 0.78);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.82;
+}
+
+.har-system-photo-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.prototype-photo-frame {
+  position: relative;
+  min-height: clamp(420px, 46vw, 620px);
+  overflow: hidden;
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background:
+    linear-gradient(135deg, rgba(247, 39, 160, 0.12), transparent 38%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    rgba(11, 10, 10, 0.92);
+  background-size: auto, 42px 42px, 42px 42px, auto;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.3);
+}
+
+.prototype-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+
+.prototype-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(209, 207, 209, 0.62);
+  font-family: "Geo", sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+}
+
+.prototype-hover-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.prototype-hover-zone-left {
+  left: 0;
+  width: 50%;
+}
+
+.prototype-hover-zone-right {
+  right: 0;
+  width: 50%;
+}
+
+.prototype-callouts {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.prototype-callout {
+  position: absolute;
+  inset: 0;
+}
+
+.prototype-callout::before {
+  content: "";
+  position: absolute;
+  left: var(--anchor-x);
+  top: var(--anchor-y);
+  width: 1px;
+  height: 130px;
+  background: linear-gradient(rgba(209, 207, 209, 0.72), rgba(247, 39, 160, 0.12));
+  transform: translate(-50%, -50%) rotate(48deg);
+  transform-origin: center;
+}
+
+.prototype-callout i {
+  position: absolute;
+  left: var(--anchor-x);
+  top: var(--anchor-y);
+  width: 8px;
+  height: 8px;
+  border: 1px solid #39ff14;
+  background: #0b0a0a;
+  box-shadow: inset 0 0 0 2px #39ff14;
+  transform: translate(-50%, -50%);
+}
+
+.prototype-callout b {
+  position: absolute;
+  left: var(--label-x);
+  top: var(--label-y);
+  display: grid;
+  gap: 4px;
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition:
+    color 140ms ease,
+    text-shadow 140ms ease;
+}
+
+.prototype-callout small {
+  color: rgba(209, 207, 209, 0.58);
+  font-size: 0.8rem;
+  transition: color 140ms ease;
+}
+
+.prototype-hover-zone-left:hover ~ .prototype-callouts .highlight-left b,
+.prototype-hover-zone-right:hover ~ .prototype-callouts .highlight-right b {
+  color: #39ff14;
+  text-shadow: 0 0 14px rgba(57, 255, 20, 0.42);
+}
+
+.prototype-hover-zone-left:hover ~ .prototype-callouts .highlight-left small,
+.prototype-hover-zone-right:hover ~ .prototype-callouts .highlight-right small {
+  color: rgba(57, 255, 20, 0.72);
+}
+
+.prototype-callout-list {
+  display: none;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.prototype-callout-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.12);
+}
+
+.prototype-callout-list strong {
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  font-weight: 400;
+}
+
+.prototype-callout-list span {
+  color: rgba(209, 207, 209, 0.58);
+}
+
+.har-pipeline {
+  grid-column: 1 / -1;
+  margin-top: clamp(10px, 2vw, 24px);
+}
+
+.pipeline-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.pipeline-stage {
+  position: relative;
+  min-height: 76px;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  color: rgba(209, 207, 209, 0.72);
+  font-family: "Geo", sans-serif;
+  font-size: clamp(0.82rem, 1.2vw, 1rem);
+  text-align: center;
+  background: rgba(11, 10, 10, 0.78);
+}
+
+.pipeline-stage:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -10px;
+  z-index: 2;
+  color: #39ff14;
+}
+
+.har-system-section.has-pipeline-entered .pipeline-stage {
+  animation: illuminateStage 720ms ease forwards;
+  animation-delay: calc(var(--stage-index) * 520ms + 240ms);
+}
+
+.pipeline-packet {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  z-index: 3;
+  width: 10px;
+  height: 10px;
+  background: #39ff14;
+  box-shadow: 0 0 18px rgba(57, 255, 20, 0.7);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.har-system-section.has-pipeline-entered .pipeline-packet {
+  animation: packetTravel 3600ms ease-in-out 180ms forwards;
+}
+
+.hardware-timing {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(320px, 1fr);
+  gap: clamp(32px, 6vw, 78px);
+  align-items: end;
+  margin-top: clamp(24px, 5vw, 54px);
+}
+
+.hardware-timing h3 {
+  font-size: clamp(1.7rem, 3.2vw, 3.4rem);
+  line-height: 1.08;
+}
+
+.hardware-timing small {
+  display: block;
+  margin-top: 18px;
+  color: #8ee8a0;
+  font-family: "Geo", sans-serif;
+}
+
+.timing-bars {
+  display: grid;
+  gap: 16px;
+}
+
+.timing-row {
+  display: grid;
+  gap: 10px;
+}
+
+.timing-row div {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  color: rgba(209, 207, 209, 0.72);
+  font-family: "Geo", sans-serif;
+}
+
+.timing-row strong {
+  color: #f4eff5;
+  font-weight: 400;
+}
+
+.timing-row i {
+  display: block;
+  height: 8px;
+  background: linear-gradient(90deg, #39ff14, #f727a0);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.har-system-section.has-timing-entered .timing-row i {
+  animation: growTimingBar 620ms ease forwards;
+}
+
+.system-transition {
+  grid-column: 1 / -1;
+  margin-top: clamp(34px, 6vw, 70px);
+  text-align: center;
+}
+
+.system-transition p {
+  font-size: clamp(2.1rem, 5vw, 5.2rem);
+  line-height: 1;
+}
+
+.system-transition span {
+  display: block;
+  margin-top: 14px;
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+}
+
+.har-experiment-lab {
+  position: relative;
+  min-height: clamp(820px, 94vh, 1120px);
+  padding: clamp(68px, 9vw, 112px) 0;
+}
+
+.har-experiment-lab::before {
+  content: "";
+  position: absolute;
+  inset: 0 -8%;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(247, 39, 160, 0.1), transparent 30%),
+    radial-gradient(circle at 52% 66%, rgba(57, 255, 20, 0.06), transparent 26%),
+    linear-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+  background-size: auto, auto, 64px 64px, 64px 64px;
+  pointer-events: none;
+}
+
+.har-lab-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: clamp(220px, 20vw, 280px) minmax(0, 1fr);
+  gap: clamp(36px, 6vw, 86px);
+  align-items: start;
+}
+
+.har-experiment-nav {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 22px;
+  padding-top: 8px;
+}
+
+.har-experiment-nav > p {
+  margin: 0;
+  color: rgba(142, 232, 160, 0.9);
+  font-family: "Geo", sans-serif;
+  font-size: 0.96rem;
+}
+
+.har-experiment-tablist {
+  display: grid;
+  gap: 4px;
+}
+
+.har-experiment-tab {
+  position: relative;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 52px;
+  padding: 10px 0 10px 18px;
+  color: rgba(209, 207, 209, 0.54);
+  font-family: "Geo", sans-serif;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.har-experiment-tab.has-divider {
+  margin-top: 18px;
+}
+
+.har-experiment-tab.has-divider::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 18px;
+  right: 24px;
+  height: 1px;
+  background: rgba(209, 207, 209, 0.14);
+}
+
+.har-experiment-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 0;
+  background: #39ff14;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.44);
+  transform: translateY(-50%);
+  transition:
+    height 180ms ease,
+    transform 180ms ease;
+}
+
+.har-experiment-tab span,
+.har-experiment-tab strong,
+.har-experiment-tab em {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.har-experiment-tab span {
+  color: rgba(247, 39, 160, 0.72);
+  font-size: 0.88rem;
+}
+
+.har-experiment-tab strong {
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+}
+
+.har-experiment-tab em {
+  display: none;
+}
+
+.har-experiment-tab:hover,
+.har-experiment-tab:focus-visible,
+.har-experiment-tab.is-active {
+  color: #f4eff5;
+}
+
+.har-experiment-tab:hover::after,
+.har-experiment-tab:focus-visible::after {
+  height: 16px;
+  transform: translateY(-50%) translateX(2px);
+}
+
+.har-experiment-tab.is-active::after {
+  height: 32px;
+}
+
+.har-experiment-tab:focus-visible {
+  outline: 1px solid rgba(57, 255, 20, 0.68);
+  outline-offset: 4px;
+}
+
+.har-lab-panel-shell {
+  position: relative;
+  min-width: 0;
+}
+
+.har-lab-panel {
+  min-width: 0;
+  outline: 0;
+}
+
+.hardware-drift-experiment {
+  display: grid;
+  gap: clamp(34px, 5vw, 58px);
+}
+
+.hardware-drift-copy h2,
+.har-lab-placeholder h2 {
+  max-width: 920px;
+  margin: 0 0 24px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.55rem, 5.4vw, 6rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.hardware-drift-copy p:not(.har-section-label),
+.har-lab-placeholder p:not(.har-section-label) {
+  max-width: 720px;
+  margin: 0 0 12px;
+  color: rgba(226, 224, 226, 0.76);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.78;
+}
+
+.hardware-drift-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.55fr);
+  gap: clamp(22px, 4vw, 42px);
+  align-items: stretch;
+}
+
+.drift-simulation-panel,
+.drift-result-card,
+.jitter-chart-panel,
+.har-lab-placeholder {
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background: rgba(11, 10, 10, 0.68);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.drift-simulation-panel {
+  padding: clamp(20px, 3vw, 34px);
+}
+
+.drift-simulation-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.drift-simulation-header div {
+  display: grid;
+  gap: 8px;
+}
+
+.drift-simulation-header span,
+.jitter-chart-heading span,
+.drift-visual-note {
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+}
+
+.drift-simulation-header strong {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  line-height: 0.9;
+}
+
+.har-run-button,
+.har-reset-button {
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.har-run-button {
+  min-height: 44px;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(57, 255, 20, 0.58);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+}
+
+.har-run-button:hover,
+.har-run-button:focus-visible,
+.har-reset-button:hover,
+.har-reset-button:focus-visible {
+  color: #39ff14;
+  transform: translateY(2px);
+}
+
+.har-run-button:disabled {
+  color: rgba(209, 207, 209, 0.52);
+  cursor: progress;
+  transform: none;
+}
+
+.har-run-button:focus-visible,
+.har-reset-button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 5px;
+}
+
+.drift-sensor-rows {
+  display: grid;
+  gap: 18px;
+}
+
+.drift-sensor-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(180px, 1fr) 86px;
+  gap: 18px;
+  align-items: center;
+  color: rgba(209, 207, 209, 0.7);
+  font-family: "Geo", sans-serif;
+}
+
+.drift-sensor-row > span,
+.drift-sensor-row > strong {
+  font-weight: 400;
+}
+
+.drift-sensor-row > strong {
+  color: rgba(244, 239, 245, 0.9);
+  text-align: right;
+  transition: color 220ms ease;
+}
+
+.drift-sensor-row.is-outlier > span,
+.drift-sensor-row.is-outlier > strong {
+  color: #39ff14;
+}
+
+.drift-sensor-track {
+  position: relative;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.drift-sensor-track::before,
+.drift-sensor-track::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.drift-sensor-track::before {
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(209, 207, 209, 0.4), rgba(209, 207, 209, 0.08));
+}
+
+.drift-sensor-track::after {
+  right: 0;
+  width: 1px;
+  height: 30px;
+  background: rgba(209, 207, 209, 0.18);
+}
+
+.drift-sensor-track i {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--endpoint-progress) * 100%);
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(57, 255, 20, 0.72);
+  background: #0b0a0a;
+  box-shadow:
+    inset 0 0 0 3px #39ff14,
+    0 0 16px rgba(57, 255, 20, 0.26);
+  transform: translate(-50%, -50%);
+  transition:
+    left 420ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.hardware-drift-experiment.is-running .drift-sensor-track i {
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.drift-sensor-row.is-outlier .drift-sensor-track i {
+  border-color: #f727a0;
+  box-shadow:
+    inset 0 0 0 3px #39ff14,
+    0 0 20px rgba(247, 39, 160, 0.46);
+}
+
+.drift-sensor-row em {
+  position: absolute;
+  right: 0;
+  bottom: -16px;
+  color: rgba(247, 39, 160, 0.9);
+  font-size: 0.76rem;
+  font-style: normal;
+}
+
+.drift-visual-note {
+  margin: 32px 0 0;
+  font-size: 0.88rem;
+}
+
+.drift-result-card {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: clamp(20px, 3vw, 30px);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 320ms ease,
+    transform 320ms ease;
+}
+
+.drift-result-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.drift-result-card div {
+  display: grid;
+  gap: 8px;
+}
+
+.drift-result-card strong {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  line-height: 0.9;
+}
+
+.drift-result-card span,
+.drift-result-card small {
+  color: rgba(209, 207, 209, 0.62);
+  font-family: "Geo", sans-serif;
+}
+
+.drift-result-card p {
+  margin: 0;
+  color: rgba(226, 224, 226, 0.74);
+  line-height: 1.68;
+}
+
+.drift-result-card h3 {
+  margin: 0;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.18;
+}
+
+.jitter-chart-panel {
+  display: grid;
+  gap: 22px;
+  padding: clamp(18px, 3vw, 30px);
+  opacity: 0.36;
+  transition: opacity 280ms ease;
+}
+
+.jitter-chart-panel.is-visible {
+  opacity: 1;
+}
+
+.jitter-chart-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+
+.har-reset-button {
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.28);
+  font-size: 0.98rem;
+}
+
+.jitter-bars {
+  display: grid;
+  gap: 12px;
+}
+
+.jitter-row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 32px;
+  gap: 14px;
+  align-items: center;
+  color: rgba(209, 207, 209, 0.68);
+  font-family: "Geo", sans-serif;
+}
+
+.jitter-row i {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  height: 8px;
+  background: rgba(209, 207, 209, 0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.jitter-chart-panel.is-visible .jitter-row i {
+  animation: growJitterBar 620ms ease forwards;
+}
+
+.jitter-row.is-outlier span,
+.jitter-row.is-outlier strong {
+  color: #39ff14;
+}
+
+.jitter-row i::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  width: var(--bar-width);
+  height: 100%;
+  background: linear-gradient(90deg, rgba(57, 255, 20, 0.8), rgba(247, 39, 160, 0.86));
+}
+
+.har-lab-placeholder {
+  min-height: 520px;
+  padding: clamp(26px, 4vw, 46px);
+}
+
+.har-lab-placeholder h2 {
+  margin-bottom: 18px;
+}
+
+.model-impact-experiment {
+  display: grid;
+  gap: clamp(30px, 4vw, 50px);
+}
+
+.model-impact-copy h2 {
+  max-width: 980px;
+  margin: 0 0 24px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.45rem, 5vw, 5.7rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.model-impact-copy p:not(.har-section-label),
+.later-drift-copy p {
+  max-width: 760px;
+  margin: 0 0 12px;
+  color: rgba(226, 224, 226, 0.76);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.78;
+}
+
+.signal-copy p {
+  max-width: none;
+  margin: 0 0 8px;
+  color: rgba(226, 224, 226, 0.76);
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  line-height: 1.52;
+}
+
+.model-impact-copy p span,
+.signal-copy strong span {
+  display: block;
+}
+
+.drift-detail-toggle {
+  margin-top: 20px;
+  padding: 10px 0;
+  color: rgba(244, 239, 245, 0.86);
+  font-family: "Geo", sans-serif;
+  font-size: 1rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(57, 255, 20, 0.42);
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.drift-detail-toggle:hover,
+.drift-detail-toggle:focus-visible {
+  color: #39ff14;
+  transform: translateY(2px);
+}
+
+.drift-detail-toggle:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 5px;
+}
+
+.drift-detail-copy {
+  display: grid;
+  grid-template-rows: 0fr;
+  max-width: 780px;
+  margin-top: 14px;
+  opacity: 0;
+  transition:
+    grid-template-rows 260ms ease,
+    opacity 260ms ease;
+}
+
+.drift-detail-copy.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.drift-detail-copy > p {
+  overflow: hidden;
+  margin: 0;
+  color: rgba(209, 207, 209, 0.62);
+  line-height: 1.68;
+}
+
+.model-impact-main {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.78fr) minmax(360px, 1fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: center;
+}
+
+.model-diagram-panel,
+.model-control-panel,
+.signal-track-panel,
+.later-drift-card {
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background: rgba(11, 10, 10, 0.64);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
+}
+
+.model-diagram-panel {
+  min-height: clamp(520px, 52vw, 680px);
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3vw, 30px);
+}
+
+.human-sensor-diagram {
+  position: relative;
+  width: min(100%, 390px);
+  aspect-ratio: 0.75;
+}
+
+.human-sensor-outline {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.human-sensor-node {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  transition:
+    filter 260ms ease,
+    transform 260ms ease;
+}
+
+.human-sensor-node::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border: 1px solid rgba(57, 255, 20, 0.5);
+  background: rgba(11, 10, 10, 0.86);
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    background 260ms ease;
+}
+
+.human-sensor-node::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(57, 255, 20, 0.14);
+  border-radius: 50%;
+  opacity: 0.68;
+  transition:
+    border-color 260ms ease,
+    opacity 260ms ease,
+    transform 260ms ease;
+}
+
+.human-sensor-node i {
+  position: relative;
+  z-index: 1;
+  width: 6px;
+  height: 6px;
+  background: #39ff14;
+  box-shadow: 0 0 14px rgba(57, 255, 20, 0.54);
+  transition:
+    background 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.human-sensor-node em {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  width: max-content;
+  padding: 5px 7px;
+  color: rgba(209, 207, 209, 0.68);
+  font-family: "Geo", sans-serif;
+  font-size: 0.66rem;
+  font-style: normal;
+  background: rgba(24, 22, 25, 0.92);
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 5px);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+.human-sensor-node:hover {
+  filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.42));
+}
+
+.human-sensor-node:hover em {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.human-sensor-node.is-misaligned {
+  transform: translate(-50%, -50%) translateX(calc(var(--drift-strength) * 8px));
+}
+
+.human-sensor-node.is-misaligned::before {
+  border-color: rgba(247, 39, 160, 0.78);
+  box-shadow: 0 0 18px rgba(247, 39, 160, 0.28);
+}
+
+.human-sensor-node.is-misaligned::after {
+  border-color: rgba(247, 39, 160, 0.34);
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.human-sensor-node.is-misaligned i {
+  background: #f727a0;
+  box-shadow: 0 0 16px rgba(247, 39, 160, 0.58);
+}
+
+.human-sensor-node.is-removed {
+  opacity: 0.16;
+  filter: grayscale(1);
+  transform: translate(-50%, -50%) scale(0.54);
+}
+
+.human-sensor-node.is-removed::before {
+  border-color: rgba(209, 207, 209, 0.24);
+  background: rgba(11, 10, 10, 0.36);
+}
+
+.human-sensor-node.is-removed::after,
+.human-sensor-node.is-removed i {
+  opacity: 0;
+}
+
+.model-control-panel {
+  display: grid;
+  gap: clamp(24px, 4vw, 42px);
+  padding: clamp(22px, 4vw, 42px);
+}
+
+.accuracy-metric {
+  display: grid;
+  gap: 8px;
+}
+
+.accuracy-metric span,
+.misaligned-control label,
+.baseline-row span,
+.current-accuracy-marker span,
+.alignment-state-label span,
+.later-view-options span {
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+}
+
+.accuracy-metric strong {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(4rem, 10vw, 8.6rem);
+  line-height: 0.82;
+}
+
+.misaligned-control {
+  display: grid;
+  gap: 14px;
+}
+
+.misaligned-control input {
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  accent-color: #f727a0;
+  cursor: pointer;
+}
+
+.sensor-count-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.sensor-count-options button,
+.later-view-options button {
+  color: rgba(209, 207, 209, 0.68);
+  font-family: "Geo", sans-serif;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.18);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.sensor-count-options button {
+  min-height: 38px;
+  font-size: 1rem;
+}
+
+.sensor-count-options button:hover,
+.sensor-count-options button:focus-visible,
+.sensor-count-options button.is-active,
+.later-view-options button:hover,
+.later-view-options button:focus-visible,
+.later-view-options button.is-active {
+  color: #f4eff5;
+  border-color: rgba(57, 255, 20, 0.64);
+}
+
+.sensor-count-options button.is-active,
+.later-view-options button.is-active {
+  color: #39ff14;
+}
+
+.sensor-count-options button:focus-visible,
+.later-view-options button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.accuracy-trace {
+  position: relative;
+  display: grid;
+  gap: 20px;
+  padding-top: 8px;
+}
+
+.baseline-row {
+  display: grid;
+  grid-template-columns: auto minmax(110px, 1fr) 42px;
+  gap: 14px;
+  align-items: center;
+}
+
+.baseline-row i {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(57, 255, 20, 0.9), rgba(57, 255, 20, 0.12));
+}
+
+.baseline-row strong,
+.current-accuracy-marker strong {
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  font-weight: 400;
+}
+
+.current-accuracy-marker {
+  position: relative;
+  left: var(--accuracy-position);
+  width: fit-content;
+  display: grid;
+  gap: 4px;
+  color: #f727a0;
+  transform: translateX(-50%);
+  transition: left 320ms ease;
+}
+
+.wave-graph-hint {
+  margin: -12px 0 0;
+  color: rgba(209, 207, 209, 0.46);
+  font-family: "Geo", sans-serif;
+  font-size: 0.88rem;
+}
+
+.signal-alignment-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.86fr);
+  gap: clamp(24px, 4vw, 46px);
+  align-items: start;
+}
+
+.signal-copy h3 {
+  max-width: 680px;
+  margin: 0 0 16px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2rem, 3.8vw, 4.2rem);
+  line-height: 1.02;
+}
+
+.signal-copy strong {
+  display: block;
+  max-width: none;
+  margin-top: 12px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.18rem, 1.72vw, 1.7rem);
+  line-height: 1.16;
+}
+
+.signal-copy strong span {
+  color: #39ff14;
+}
+
+.signal-track-panel {
+  display: grid;
+  gap: 14px;
+  margin-top: clamp(16px, 2vw, 26px);
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.alignment-state-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.alignment-state-label strong {
+  color: #39ff14;
+  font-family: "Geo", sans-serif;
+  font-weight: 400;
+}
+
+.signal-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  color: rgba(209, 207, 209, 0.66);
+  font-family: "Geo", sans-serif;
+}
+
+.signal-wave-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 64px;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.12);
+}
+
+.signal-wave {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #39ff14;
+  stroke-width: 2;
+  opacity: 0.82;
+  transform: translateX(calc(var(--drift-strength) * var(--signal-index) * 18px));
+  transition: transform 340ms ease;
+}
+
+.model-window-overlay {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 41%;
+  width: 28%;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  padding: 0 10px;
+  color: rgba(244, 239, 245, 0.78);
+  font-family: "Geo", sans-serif;
+  font-size: 0.72rem;
+  font-style: normal;
+  background: rgba(247, 39, 160, 0.08);
+  border-left: 1px solid rgba(247, 39, 160, 0.72);
+  border-right: 1px solid rgba(247, 39, 160, 0.72);
+  pointer-events: none;
+}
+
+.model-window-overlay b {
+  font-weight: 400;
+}
+
+.later-drift-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1fr);
+  gap: clamp(18px, 3vw, 34px);
+  align-items: start;
+  padding: clamp(18px, 3vw, 30px);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 320ms ease,
+    transform 320ms ease;
+}
+
+.later-drift-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.later-view-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.later-view-options button {
+  display: grid;
+  gap: 6px;
+  min-height: 72px;
+  padding: 12px 0;
+  text-align: left;
+}
+
+.later-view-options strong {
+  color: inherit;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1;
+}
+
+.later-drift-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.relative-drop {
+  display: grid;
+  gap: 6px;
+}
+
+.relative-drop strong {
+  color: #f727a0;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 0.9;
+}
+
+.relative-drop span {
+  color: rgba(209, 207, 209, 0.62);
+  font-family: "Geo", sans-serif;
+}
+
+.reduced-sensors-experiment {
+  display: grid;
+  gap: clamp(34px, 5vw, 60px);
+}
+
+.reduced-sensors-copy h2 {
+  max-width: 980px;
+  margin: 0 0 24px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.72rem, 3.5vw, 4rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.reduced-sensors-copy h2 span {
+  display: block;
+}
+
+.reduced-sensors-copy p:not(.har-section-label),
+.reduced-explanation-copy p,
+.sensor-position-copy p {
+  max-width: 760px;
+  margin: 0 0 12px;
+  color: rgba(226, 224, 226, 0.76);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.78;
+}
+
+.reduced-sensors-main {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(380px, 1fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: stretch;
+}
+
+.reduced-diagram-panel,
+.reduced-results-panel,
+.sensor-position-note {
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background: rgba(11, 10, 10, 0.64);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
+}
+
+.reduced-diagram-panel {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.sensor-config-picker {
+  width: 100%;
+  display: grid;
+  gap: 14px;
+}
+
+.sensor-config-picker > span,
+.representative-caption,
+.alignment-toggle span,
+.current-model-card > span {
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+}
+
+.sensor-config-picker div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.sensor-config-picker button,
+.drop-comparison-strip button,
+.sensor-position-note button {
+  color: rgba(209, 207, 209, 0.68);
+  font-family: "Geo", sans-serif;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.18);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.sensor-config-picker button {
+  min-height: 48px;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+}
+
+.sensor-config-picker button:hover,
+.sensor-config-picker button:focus-visible,
+.sensor-config-picker button.is-active,
+.drop-comparison-strip button:hover,
+.drop-comparison-strip button:focus-visible,
+.drop-comparison-strip button.is-active,
+.sensor-position-note button:hover,
+.sensor-position-note button:focus-visible {
+  color: #39ff14;
+  border-color: rgba(57, 255, 20, 0.64);
+}
+
+.sensor-config-picker button:focus-visible,
+.drop-comparison-strip button:focus-visible,
+.sensor-position-note button:focus-visible,
+.alignment-toggle button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.reduced-human-diagram {
+  width: min(100%, 340px);
+}
+
+.representative-caption {
+  width: 100%;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.reduced-results-panel {
+  display: grid;
+  gap: clamp(22px, 4vw, 36px);
+  padding: clamp(22px, 4vw, 42px);
+}
+
+.alignment-toggle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.alignment-toggle button {
+  position: relative;
+  width: 62px;
+  height: 32px;
+  background: rgba(209, 207, 209, 0.08);
+  border: 1px solid rgba(209, 207, 209, 0.22);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.alignment-toggle button i {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 22px;
+  height: 22px;
+  background: #39ff14;
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.48);
+  transform: translateY(-50%);
+  transition:
+    left 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.alignment-toggle button.is-misaligned {
+  border-color: rgba(247, 39, 160, 0.58);
+  background: rgba(247, 39, 160, 0.1);
+}
+
+.alignment-toggle button.is-misaligned i {
+  left: 33px;
+  background: #f727a0;
+  box-shadow: 0 0 18px rgba(247, 39, 160, 0.5);
+}
+
+.current-model-card {
+  display: grid;
+  gap: 8px;
+}
+
+.current-model-card h3 {
+  margin: 0;
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+}
+
+.current-model-card em {
+  color: rgba(247, 39, 160, 0.76);
+  font-family: "Geo", sans-serif;
+  font-style: normal;
+}
+
+.current-model-card strong {
+  margin-top: 12px;
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(4rem, 10vw, 8.2rem);
+  line-height: 0.82;
+}
+
+.current-model-card p {
+  margin: 0;
+  color: rgba(209, 207, 209, 0.64);
+  font-family: "Geo", sans-serif;
+}
+
+.current-model-card b {
+  width: fit-content;
+  margin-top: 4px;
+  color: #f727a0;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.drop-comparison-strip {
+  display: grid;
+  gap: 12px;
+}
+
+.drop-comparison-strip button {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) 64px;
+  gap: 12px;
+  align-items: center;
+  min-height: 36px;
+  padding: 0;
+  text-align: left;
+}
+
+.drop-comparison-strip i {
+  display: block;
+  height: 7px;
+  overflow: hidden;
+  background: rgba(209, 207, 209, 0.1);
+}
+
+.drop-comparison-strip i b {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(57, 255, 20, 0.72), rgba(247, 39, 160, 0.86));
+  transition: width 260ms ease;
+}
+
+.drop-comparison-strip strong {
+  color: inherit;
+  font-weight: 400;
+}
+
+.drop-comparison-strip button.is-strongest strong {
+  color: #f727a0;
+}
+
+.reduced-explanation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.74fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: start;
+}
+
+.reduced-explanation-copy strong {
+  display: block;
+  margin-top: 18px;
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.7rem, 3.2vw, 3rem);
+  line-height: 1.1;
+}
+
+.sensor-position-note {
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.sensor-position-note button {
+  width: 100%;
+  padding: 0 0 12px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.sensor-position-copy {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: 12px;
+  opacity: 0;
+  transition:
+    grid-template-rows 260ms ease,
+    opacity 260ms ease;
+}
+
+.sensor-position-copy.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.sensor-position-copy p {
+  overflow: hidden;
+  margin: 0;
+  color: rgba(209, 207, 209, 0.64);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.transition-experiment {
+  display: grid;
+  gap: clamp(34px, 5vw, 60px);
+}
+
+.transition-copy h2 {
+  max-width: 1040px;
+  margin: 0 0 24px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.25rem, 4.6vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.transition-copy h2 span {
+  display: block;
+}
+
+.transition-copy p:not(.har-section-label),
+.transition-conclusion p,
+.expected-observed-strip p {
+  max-width: 760px;
+  margin: 0 0 12px;
+  color: rgba(226, 224, 226, 0.76);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.78;
+}
+
+.transition-lab-panel,
+.transition-result-card,
+.transition-conclusion,
+.expected-observed-strip {
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background: rgba(11, 10, 10, 0.64);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
+}
+
+.transition-lab-panel {
+  display: grid;
+  gap: 22px;
+  padding: clamp(20px, 3.5vw, 38px);
+}
+
+.transition-visual-header,
+.transition-controls,
+.transition-state-list p,
+.expected-observed-strip {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+
+.transition-visual-header div {
+  display: grid;
+  gap: 6px;
+}
+
+.transition-visual-header span,
+.transition-controls button,
+.transition-state-readout span,
+.transition-result-card span,
+.transition-result-card em,
+.expected-observed-strip span {
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+}
+
+.transition-visual-header strong {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 0.9;
+}
+
+.transition-visual-header p {
+  margin: 0;
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+}
+
+.transition-track-visual {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  padding: 16px 0;
+  touch-action: none;
+  cursor: grab;
+}
+
+.transition-track-visual:active {
+  cursor: grabbing;
+}
+
+.activity-track-row {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  color: rgba(209, 207, 209, 0.64);
+  font-family: "Geo", sans-serif;
+}
+
+.activity-track {
+  position: relative;
+  overflow: hidden;
+  height: 58px;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.14);
+  background:
+    linear-gradient(90deg, rgba(57, 255, 20, 0.14) 0 var(--boundary), rgba(247, 39, 160, 0.16) var(--boundary) 100%),
+    rgba(255, 255, 255, 0.018);
+  transition: background 620ms ease;
+}
+
+.activity-track i {
+  position: absolute;
+  top: 50%;
+  color: rgba(244, 239, 245, 0.54);
+  font-size: 0.82rem;
+  font-style: normal;
+  transform: translateY(-50%);
+}
+
+.activity-track .activity-a {
+  left: 14px;
+}
+
+.activity-track .activity-b {
+  right: 14px;
+}
+
+.activity-track b {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--boundary);
+  width: 1px;
+  background: rgba(244, 239, 245, 0.82);
+  box-shadow: 0 0 14px rgba(247, 39, 160, 0.32);
+  transition: left 620ms ease;
+}
+
+.activity-window-highlight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 4px;
+  color: rgba(244, 239, 245, 0.86);
+  font-family: "Geo", sans-serif;
+  background:
+    linear-gradient(90deg, rgba(57, 255, 20, 0.2) 0 var(--split), rgba(247, 39, 160, 0.22) var(--split) 100%),
+    rgba(209, 207, 209, 0.035);
+  border-left: 1px solid rgba(57, 255, 20, 0.58);
+  border-right: 1px solid rgba(247, 39, 160, 0.58);
+  pointer-events: none;
+  transition:
+    left 120ms linear,
+    background 180ms ease;
+}
+
+.activity-window-highlight strong,
+.activity-window-highlight small {
+  font-weight: 400;
+  pointer-events: none;
+}
+
+.activity-window-highlight.is-mixed {
+  background:
+    linear-gradient(90deg, rgba(57, 255, 20, 0.28) 0 var(--split), rgba(247, 39, 160, 0.28) var(--split) 100%),
+    rgba(209, 207, 209, 0.04);
+}
+
+.transition-model-window {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 4px;
+  color: rgba(244, 239, 245, 0.86);
+  font-family: "Geo", sans-serif;
+  background: rgba(11, 10, 10, 0.18);
+  margin-left: 106px;
+  width: calc(var(--window-width) * (100% - 106px) / 100);
+  border: 0;
+  pointer-events: none;
+  transition:
+    left 120ms linear,
+    background 180ms ease;
+}
+
+.transition-model-window strong,
+.transition-model-window span {
+  font-weight: 400;
+  pointer-events: none;
+}
+
+.transition-model-window.is-mixed {
+  background: rgba(11, 10, 10, 0.1);
+}
+
+.transition-controls {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.transition-controls button {
+  min-height: 40px;
+  padding: 8px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.2);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.transition-controls button:hover,
+.transition-controls button:focus-visible {
+  color: #39ff14;
+  border-color: rgba(57, 255, 20, 0.64);
+  transform: translateY(2px);
+}
+
+.transition-controls button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.transition-state-readout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.48fr) minmax(280px, 1fr);
+  gap: 34px;
+  align-items: start;
+  padding-top: 8px;
+  border-top: 1px solid rgba(209, 207, 209, 0.12);
+}
+
+.transition-state-list {
+  display: grid;
+  gap: 16px;
+}
+
+.transition-state-list p {
+  margin: 0;
+}
+
+.transition-state-readout strong {
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  font-weight: 400;
+}
+
+.transition-state-readout h3 {
+  align-self: start;
+  margin: 0 0 0 clamp(18px, 4vw, 56px);
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.36rem, 2.88vw, 2.88rem);
+  line-height: 1.08;
+}
+
+.transition-state-readout h3 span {
+  display: block;
+  color: #39ff14;
+}
+
+.transition-results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 30px);
+}
+
+.transition-result-card {
+  display: grid;
+  gap: 12px;
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.transition-result-card em {
+  font-style: normal;
+}
+
+.transition-result-card p {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  max-width: none;
+  margin: 0;
+  color: rgba(226, 224, 226, 0.76);
+  font-family: "Geo", sans-serif;
+}
+
+.transition-result-card strong {
+  color: #39ff14;
+  font-weight: 400;
+}
+
+.transition-result-card.is-difficult {
+  border-color: rgba(247, 39, 160, 0.28);
+}
+
+.transition-conclusion {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.5fr) minmax(0, 1fr);
+  gap: clamp(18px, 4vw, 48px);
+  padding: clamp(22px, 4vw, 38px);
+}
+
+.transition-conclusion div p {
+  margin-bottom: 10px;
+  color: rgba(209, 207, 209, 0.62);
+  font-family: "Geo", sans-serif;
+  line-height: 1.45;
+}
+
+.transition-conclusion div strong {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 0.9;
+}
+
+.transition-conclusion h3 {
+  grid-column: 2;
+  margin: 0;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+}
+
+.expected-observed-strip {
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.expected-observed-strip p {
+  max-width: none;
+  margin: 0;
+}
+
+.expected-observed-strip span {
+  display: block;
+  margin-bottom: 6px;
+  color: #8ee8a0;
+}
+
+.augmentation-experiment {
+  display: grid;
+  gap: clamp(34px, 5vw, 60px);
+}
+
+.augmentation-copy h2 {
+  max-width: 980px;
+  margin: 0 0 24px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.35rem, 4.8vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.augmentation-copy p:not(.har-section-label),
+.augmentation-conclusion p,
+.training-data-copy p {
+  max-width: 780px;
+  margin: 0 0 12px;
+  color: rgba(226, 224, 226, 0.76);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.78;
+}
+
+.augmentation-copy > strong {
+  display: block;
+  margin-top: 20px;
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.55rem, 2.8vw, 2.7rem);
+}
+
+.augmentation-methods {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.augmentation-method-card,
+.augmentation-demo-panel,
+.augmentation-result-panel,
+.augmentation-conclusion,
+.training-data-note {
+  border: 1px solid rgba(209, 207, 209, 0.14);
+  background: rgba(11, 10, 10, 0.64);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
+}
+
+.augmentation-method-card {
+  display: grid;
+  gap: 8px;
+  min-height: 104px;
+  padding: 16px;
+}
+
+.augmentation-method-card span,
+.augmentation-demo-header span,
+.augmentation-demo-header p,
+.condition-selector span,
+.condition-selector small,
+.percentage-point-callout span {
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+}
+
+.augmentation-method-card span {
+  color: #8ee8a0;
+}
+
+.augmentation-method-card p {
+  margin: 0;
+  color: rgba(226, 224, 226, 0.72);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.augmentation-main-grid {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(340px, 0.76fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: stretch;
+}
+
+.augmentation-demo-panel,
+.augmentation-result-panel {
+  display: grid;
+  gap: clamp(20px, 3vw, 34px);
+  padding: clamp(22px, 4vw, 40px);
+}
+
+.augmentation-demo-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+}
+
+.augmentation-demo-header div {
+  display: grid;
+  gap: 8px;
+}
+
+.augmentation-demo-header strong {
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  font-size: clamp(0.96rem, 1.6vw, 1.36rem);
+  font-weight: 400;
+}
+
+.normal-training-result {
+  display: grid;
+  justify-items: end;
+  gap: 6px;
+}
+
+.normal-training-result p {
+  margin: 0;
+  max-width: 220px;
+  text-align: right;
+}
+
+.normal-training-result b {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 0.9;
+}
+
+.signal-chaos-demo {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) 96px;
+  gap: 22px;
+  align-items: center;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.clean-signal-row,
+.signal-copy-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.clean-signal-row span {
+  color: rgba(209, 207, 209, 0.58);
+  font-family: "Geo", sans-serif;
+}
+
+.clean-signal-row svg,
+.chaos-signal svg {
+  width: 100%;
+  height: 58px;
+  fill: none;
+  stroke: #39ff14;
+  stroke-width: 2;
+}
+
+.chaos-signal {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-22px);
+}
+
+.augmentation-experiment.has-started .chaos-signal {
+  animation: showChaosSignal 520ms ease forwards;
+}
+
+.augmentation-experiment.has-started .chaos-signal.stretch {
+  animation-delay: 360ms;
+}
+
+.augmentation-experiment.has-started .chaos-signal.compress {
+  animation-delay: 780ms;
+}
+
+.augmentation-experiment.has-started .chaos-signal.dropout {
+  animation-delay: 1180ms;
+}
+
+.chaos-signal.stretch svg {
+  transform: scaleX(1.12);
+  transform-origin: left;
+}
+
+.chaos-signal.compress svg {
+  transform: scaleX(0.84);
+  transform-origin: left;
+}
+
+.chaos-signal i {
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  background: #f727a0;
+  box-shadow: 0 0 12px rgba(247, 39, 160, 0.6);
+  transform: translate(-50%, -50%);
+}
+
+.chaos-signal i:nth-of-type(1) {
+  left: 30%;
+}
+
+.chaos-signal i:nth-of-type(2) {
+  left: 58%;
+}
+
+.chaos-signal i:nth-of-type(3) {
+  left: 74%;
+}
+
+.chaos-signal.dropout i {
+  background: rgba(247, 39, 160, 0.2);
+  border: 1px solid rgba(247, 39, 160, 0.72);
+}
+
+.model-node {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  color: #f4eff5;
+  font-family: "Geo", sans-serif;
+  border: 1px solid rgba(57, 255, 20, 0.48);
+  background: rgba(57, 255, 20, 0.06);
+}
+
+.model-node i {
+  position: absolute;
+  left: -56px;
+  width: 46px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.76));
+  opacity: 0;
+}
+
+.model-node i:nth-child(1) {
+  top: 30%;
+}
+
+.model-node i:nth-child(2) {
+  top: 50%;
+}
+
+.model-node i:nth-child(3) {
+  top: 70%;
+}
+
+.augmentation-experiment.has-started .model-node i {
+  animation: flowToModel 680ms ease forwards;
+  animation-delay: 1660ms;
+}
+
+.train-chaos-button,
+.condition-selector button,
+.reset-training-button,
+.training-data-note button {
+  color: rgba(244, 239, 245, 0.86);
+  font-family: "Geo", sans-serif;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(57, 255, 20, 0.42);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.train-chaos-button {
+  width: fit-content;
+  min-height: 46px;
+  padding: 10px 0;
+  font-size: clamp(1.1rem, 1.8vw, 1.38rem);
+}
+
+.train-chaos-button:hover,
+.train-chaos-button:focus-visible,
+.condition-selector button:hover,
+.condition-selector button:focus-visible,
+.condition-selector button.is-active,
+.reset-training-button:hover,
+.reset-training-button:focus-visible,
+.training-data-note button:hover,
+.training-data-note button:focus-visible {
+  color: #39ff14;
+  border-color: rgba(57, 255, 20, 0.72);
+  transform: translateY(2px);
+}
+
+.train-chaos-button:disabled,
+.condition-selector button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+  transform: none;
+}
+
+.train-chaos-button:focus-visible,
+.condition-selector button:focus-visible,
+.reset-training-button:focus-visible,
+.training-data-note button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.augmentation-result-panel {
+  opacity: 0.34;
+  transform: translateY(10px);
+  transition:
+    opacity 320ms ease,
+    transform 320ms ease;
+}
+
+.augmentation-result-panel.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.condition-selector {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.condition-selector button {
+  display: grid;
+  gap: 5px;
+  min-height: 58px;
+  padding: 8px 0;
+  text-align: left;
+}
+
+.condition-selector button.is-active {
+  color: #39ff14;
+}
+
+.condition-selector small {
+  font-size: 0.74rem;
+  line-height: 1.2;
+}
+
+.training-comparison-bars {
+  display: grid;
+  gap: 20px;
+}
+
+.training-bar-row {
+  display: grid;
+  grid-template-columns: 94px minmax(0, 1fr) 38px;
+  gap: 14px;
+  align-items: center;
+  color: rgba(209, 207, 209, 0.68);
+  font-family: "Geo", sans-serif;
+}
+
+.training-bar-row i {
+  display: block;
+  height: 12px;
+  overflow: hidden;
+  background: rgba(209, 207, 209, 0.1);
+}
+
+.training-bar-row i b {
+  display: block;
+  height: 100%;
+  background: rgba(247, 39, 160, 0.76);
+  transition: width 320ms ease;
+}
+
+.training-bar-row.is-augmented i b {
+  background: linear-gradient(90deg, rgba(57, 255, 20, 0.74), rgba(142, 232, 160, 0.94));
+}
+
+.training-bar-row strong {
+  color: #f4eff5;
+  font-weight: 400;
+}
+
+.percentage-point-callout {
+  display: grid;
+  gap: 8px;
+}
+
+.percentage-point-callout strong {
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.65rem, 3vw, 2.8rem);
+  line-height: 1;
+}
+
+.reset-training-button {
+  width: fit-content;
+  padding: 8px 0;
+}
+
+.augmentation-conclusion {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.58fr);
+  gap: clamp(24px, 5vw, 58px);
+  padding: clamp(22px, 4vw, 40px);
+}
+
+.augmentation-conclusion h3 {
+  max-width: 780px;
+  margin: 0 0 20px;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.9rem, 3.7vw, 3.7rem);
+  line-height: 1.05;
+}
+
+.training-data-note {
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.training-data-note button {
+  width: 100%;
+  padding: 0 0 12px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.training-data-copy {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: 12px;
+  opacity: 0;
+  transition:
+    grid-template-rows 260ms ease,
+    opacity 260ms ease;
+}
+
+.training-data-copy.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.training-data-copy p {
+  overflow: hidden;
+  margin: 0;
+  color: rgba(209, 207, 209, 0.64);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.har-results-panel {
+  display: grid;
+  gap: clamp(42px, 6vw, 78px);
+  padding-bottom: clamp(32px, 7vw, 96px);
+}
+
+.har-results-hero h2 {
+  max-width: 980px;
+  margin: 0;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(2.8rem, 6vw, 7rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.har-results-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
+}
+
+.har-result-block {
+  position: relative;
+  display: grid;
+  align-content: end;
+  min-height: clamp(260px, 30vw, 420px);
+  padding: clamp(22px, 4vw, 42px) 0 0;
+  border-top: 1px solid rgba(209, 207, 209, 0.18);
+}
+
+.har-result-block:first-child {
+  grid-row: span 2;
+}
+
+.har-result-block strong {
+  position: relative;
+  z-index: 1;
+  color: #39ff14;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(4rem, 10vw, 10rem);
+  line-height: 0.82;
+}
+
+.har-result-block p {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 22px 0 0;
+  color: rgba(226, 224, 226, 0.76);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.65;
+}
+
+.har-result-block small {
+  display: block;
+  margin-top: 12px;
+  color: rgba(247, 39, 160, 0.82);
+  font-family: "Geo", sans-serif;
+}
+
+.result-mini-lines,
+.result-mini-slope,
+.result-mini-bars {
+  position: absolute;
+  inset: clamp(24px, 4vw, 42px) 0 auto;
+  height: 110px;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.result-mini-lines {
+  display: grid;
+  gap: 14px;
+  width: min(72%, 520px);
+}
+
+.result-mini-lines i {
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(209, 207, 209, 0.32), rgba(57, 255, 20, 0.52));
+}
+
+.result-mini-lines i:nth-child(2) {
+  margin-left: 12%;
+}
+
+.result-mini-lines i:nth-child(3) {
+  margin-left: 28%;
+}
+
+.result-mini-slope::before,
+.result-mini-slope i,
+.result-mini-bars i {
+  content: "";
+  position: absolute;
+  display: block;
+}
+
+.result-mini-slope::before {
+  left: 0;
+  right: 0;
+  top: 62px;
+  height: 1px;
+  background: rgba(209, 207, 209, 0.12);
+}
+
+.result-mini-slope i {
+  left: 0;
+  top: 22px;
+  width: 72%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(57, 255, 20, 0.72), rgba(247, 39, 160, 0.78));
+  transform: rotate(8deg);
+  transform-origin: left;
+}
+
+.result-mini-bars i {
+  left: 0;
+  height: 12px;
+  background: rgba(247, 39, 160, 0.72);
+}
+
+.result-mini-bars i:first-child {
+  top: 28px;
+  width: 74%;
+}
+
+.result-mini-bars i:last-child {
+  top: 62px;
+  width: 82%;
+  background: rgba(57, 255, 20, 0.78);
+}
+
+.har-results-conclusion {
+  max-width: 1120px;
+  padding: clamp(24px, 5vw, 54px) 0;
+  border-top: 1px solid rgba(209, 207, 209, 0.14);
+  border-bottom: 1px solid rgba(209, 207, 209, 0.14);
+}
+
+.har-results-conclusion p {
+  max-width: 980px;
+  margin: 0 0 18px;
+  color: rgba(244, 239, 245, 0.88);
+  font-size: clamp(1.2rem, 2.1vw, 2rem);
+  line-height: 1.45;
+}
+
+.har-results-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.34fr);
+  gap: clamp(28px, 5vw, 58px);
+  align-items: start;
+}
+
+.har-built-with h3 {
+  margin: 0 0 18px;
+  color: rgba(142, 232, 160, 0.9);
+  font-family: "Geo", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.har-built-with div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+.har-built-with span,
+.har-artifact-actions a,
+.hardware-easter-egg button,
+.hardware-byte-table span {
+  color: rgba(209, 207, 209, 0.62);
+  font-family: "Geo", sans-serif;
+}
+
+.har-built-with span {
+  border-bottom: 1px solid rgba(209, 207, 209, 0.18);
+}
+
+.har-artifact-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.har-artifact-actions a {
+  width: fit-content;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.18);
+}
+
+.hardware-easter-egg {
+  max-width: 860px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(209, 207, 209, 0.1);
+}
+
+.hardware-easter-egg button {
+  padding: 8px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.16);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.hardware-easter-egg button:hover,
+.hardware-easter-egg button:focus-visible,
+.har-artifact-actions a:hover,
+.har-artifact-actions a:focus-visible {
+  color: #39ff14;
+  border-color: rgba(57, 255, 20, 0.64);
+}
+
+.hardware-easter-egg button:focus-visible,
+.har-artifact-actions a:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.hardware-footnote-copy {
+  display: grid;
+  grid-template-rows: 0fr;
+  gap: 0;
+  margin-top: 14px;
+  opacity: 0;
+  transition:
+    grid-template-rows 260ms ease,
+    opacity 260ms ease;
+}
+
+.hardware-footnote-copy.is-open {
+  grid-template-rows: 1fr;
+  gap: 16px;
+  opacity: 1;
+}
+
+.hardware-footnote-copy > * {
+  overflow: hidden;
+}
+
+.hardware-byte-table {
+  display: grid;
+  gap: 8px;
+}
+
+.hardware-byte-table p {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0;
+}
+
+.hardware-byte-table strong {
+  color: #39ff14;
+  font-family: "Geo", sans-serif;
+  font-weight: 400;
+}
+
+.hardware-footnote-copy h3 {
+  margin: 0;
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.8rem, 3.6vw, 3.6rem);
+  line-height: 1;
+}
+
+.hardware-footnote-copy p {
+  margin: 0;
+  color: rgba(226, 224, 226, 0.72);
+  line-height: 1.68;
+}
+
+.har-results-panel {
+  gap: clamp(32px, 5vw, 58px);
+  padding-bottom: clamp(48px, 8vw, 110px);
+}
+
+.har-results-hero h2 {
+  max-width: 840px;
+  font-size: clamp(2.25rem, 4.8vw, 5.2rem);
+  line-height: 1;
+}
+
+.har-results-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(209, 207, 209, 0.16);
+  border-bottom: 1px solid rgba(209, 207, 209, 0.16);
+}
+
+.har-result-block,
+.har-result-block:first-child {
+  grid-row: auto;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) minmax(170px, 260px);
+  gap: clamp(20px, 4vw, 48px);
+  align-items: center;
+  align-content: center;
+  min-height: 154px;
+  padding: clamp(22px, 3vw, 34px) 0;
+  border-top: 0;
+  border-bottom: 1px solid rgba(209, 207, 209, 0.12);
+}
+
+.har-result-block:last-child {
+  border-bottom: 0;
+}
+
+.har-result-block strong {
+  font-size: clamp(1.3rem, 2.7vw, 2.9rem);
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.har-result-block p {
+  max-width: 560px;
+  margin: 0;
+  font-size: clamp(0.98rem, 1.25vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.har-result-block small {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.result-mini-lines,
+.result-mini-slope,
+.result-mini-bars {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 76px;
+  align-self: center;
+  opacity: 0.66;
+}
+
+.result-mini-lines {
+  gap: 10px;
+  width: 100%;
+  align-content: center;
+}
+
+.result-mini-slope::before {
+  top: 40px;
+}
+
+.result-mini-slope i {
+  top: 24px;
+}
+
+.result-mini-bars i:first-child {
+  top: 20px;
+}
+
+.result-mini-bars i:last-child {
+  top: 48px;
+}
+
+.har-results-conclusion {
+  max-width: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(26px, 4vw, 42px);
+  padding: clamp(26px, 4vw, 44px) 0;
+}
+
+.har-results-conclusion p {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(1rem, 1.45vw, 1.28rem);
+  line-height: 1.62;
+}
+
+.har-results-conclusion-lead p {
+  color: #f4eff5;
+  font-family: "Tektur", system-ui;
+  font-size: clamp(1.45rem, 2.6vw, 2.65rem);
+  line-height: 1.12;
+}
+
+.har-results-conclusion-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 6vw, 80px);
+  align-items: start;
+  padding-top: clamp(18px, 3vw, 28px);
+  border-top: 1px solid rgba(209, 207, 209, 0.12);
+}
+
+.har-results-footer {
+  grid-template-columns: 1fr;
+}
+
+.har-built-with div {
+  gap: 8px 16px;
+}
+
+.hardware-easter-egg {
+  max-width: 760px;
+}
+
+.har-results-panel .har-results-hero,
+.har-results-panel .har-result-block,
+.har-results-panel .har-results-conclusion,
+.har-results-panel .har-results-footer,
+.har-results-panel .hardware-easter-egg {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: resultsReveal 620ms ease forwards;
+}
+
+.har-results-panel .har-results-hero {
+  animation-delay: 80ms;
+}
+
+.har-results-panel .har-result-block:nth-child(1) {
+  animation-delay: 220ms;
+}
+
+.har-results-panel .har-result-block:nth-child(2) {
+  animation-delay: 340ms;
+}
+
+.har-results-panel .har-result-block:nth-child(3) {
+  animation-delay: 460ms;
+}
+
+.har-results-panel .har-results-conclusion {
+  animation-delay: 620ms;
+}
+
+.har-results-panel .har-results-footer {
+  animation-delay: 760ms;
+}
+
+.har-results-panel .hardware-easter-egg {
+  animation-delay: 880ms;
+}
+
+.har-results-panel .result-mini-lines i,
+.har-results-panel .result-mini-bars i {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: resultLineReveal 720ms ease forwards;
+}
+
+.har-results-panel .result-mini-lines i:nth-child(1) {
+  animation-delay: 500ms;
+}
+
+.har-results-panel .result-mini-lines i:nth-child(2) {
+  animation-delay: 580ms;
+}
+
+.har-results-panel .result-mini-lines i:nth-child(3) {
+  animation-delay: 660ms;
+}
+
+.har-results-panel .result-mini-slope i {
+  transform: rotate(8deg) scaleX(0);
+  transform-origin: left;
+  animation: resultSlopeReveal 720ms ease forwards;
+  animation-delay: 680ms;
+}
+
+.har-results-panel .result-mini-bars i:first-child {
+  animation-delay: 780ms;
+}
+
+.har-results-panel .result-mini-bars i:last-child {
+  animation-delay: 900ms;
+}
+
+@keyframes packetTravel {
+  0% {
+    left: 4%;
+    opacity: 0;
+  }
+
+  10%,
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 96%;
+    opacity: 0;
+  }
+}
+
+@keyframes illuminateStage {
+  0%,
+  100% {
+    color: rgba(209, 207, 209, 0.72);
+    background: rgba(11, 10, 10, 0.78);
+  }
+
+  45% {
+    color: #ffffff;
+    background: rgba(57, 255, 20, 0.09);
+  }
+}
+
+@keyframes growTimingBar {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes drawSignal {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes showSample {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes growJitterBar {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes showChaosSignal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flowToModel {
+  0% {
+    opacity: 0;
+    transform: translateX(-18px) scaleX(0.4);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(16px) scaleX(1);
+  }
+}
+
+@keyframes resultsReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes resultLineReveal {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes resultSlopeReveal {
+  to {
+    transform: rotate(8deg) scaleX(1);
+  }
+}
+
+.har-section-label {
+  margin: 0 0 18px;
+  color: #8ee8a0;
+  font-family: "Geo", sans-serif;
+  font-size: clamp(0.92rem, 1.2vw, 1.08rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .har-hero,
+  .har-hero-visual,
+  .har-hero-sensor,
+  .timeline-track,
+  .timeline-helper,
+  .pipeline-stage,
+  .pipeline-packet,
+  .timing-row i,
+  .har-experiment-tab,
+  .har-lab-panel,
+  .drift-result-card,
+  .jitter-chart-panel,
+  .drift-sensor-track i,
+  .jitter-row i {
+    transition: none;
+  }
+
+  .har-hero-sensor,
+  .har-hero-sensor::after,
+  .sensor-drift-section.is-visible .timeline-track::before,
+  .sensor-drift-section.is-visible .timeline-track i,
+    .har-system-section.has-pipeline-entered .pipeline-stage,
+    .har-system-section.has-pipeline-entered .pipeline-packet,
+    .har-system-section.has-timing-entered .timing-row i,
+  .har-hero.is-desynced .har-hero-sensor.will-drift i,
+  .jitter-chart-panel.is-visible .jitter-row i {
+    animation: none;
+  }
+
+  .har-hero-visual,
+  .har-hero-sensor {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .har-hero-visual {
+    transform: none;
+  }
+
+  .timeline-track::before,
+  .timeline-track i {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .timeline-track::before {
+    transform: scaleX(1);
+  }
+
+  .pipeline-packet {
+    display: none;
+  }
+
+  .timing-row i {
+    transform: scaleX(1);
+  }
+
+  .jitter-row i {
+    transform: scaleX(1);
+  }
+
+  .human-sensor-node,
+  .alignment-toggle button i,
+  .drop-comparison-strip i b,
+    .sensor-position-copy,
+    .activity-track,
+    .activity-track b,
+    .transition-model-window,
+    .chaos-signal,
+    .model-node i,
+    .augmentation-result-panel,
+    .training-bar-row i b,
+    .training-data-copy,
+    .hardware-footnote-copy {
+      transition: none;
+    }
+
+    .augmentation-experiment.has-started .chaos-signal,
+    .augmentation-experiment.has-started .model-node i,
+    .har-results-panel .har-results-hero,
+    .har-results-panel .har-result-block,
+    .har-results-panel .har-results-conclusion,
+    .har-results-panel .har-results-footer,
+    .har-results-panel .hardware-easter-egg,
+    .har-results-panel .result-mini-lines i,
+    .har-results-panel .result-mini-bars i,
+    .har-results-panel .result-mini-slope i {
+      animation: none;
+    }
+
+    .chaos-signal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .har-results-panel .har-results-hero,
+    .har-results-panel .har-result-block,
+    .har-results-panel .har-results-conclusion,
+    .har-results-panel .har-results-footer,
+    .har-results-panel .hardware-easter-egg {
+      opacity: 1;
+      transform: none;
+    }
+
+    .har-results-panel .result-mini-lines i,
+    .har-results-panel .result-mini-bars i {
+      transform: scaleX(1);
+    }
+
+    .har-results-panel .result-mini-slope i {
+      transform: rotate(8deg) scaleX(1);
+    }
+
+  }
+
+@media (max-width: 900px) {
+  .har-case-study {
+    gap: 72px;
+  }
+
+  .har-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 72px 0 44px;
+  }
+
+  .har-hero-visual {
+    width: min(88vw, 390px);
+  }
+
+  .sensor-drift-section,
+  .har-system-section,
+  .hardware-timing {
+    grid-template-columns: 1fr;
+  }
+
+  .har-lab-shell {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .har-experiment-nav {
+    position: relative;
+    top: auto;
+    gap: 14px;
+    overflow: hidden;
+    padding-top: 0;
+  }
+
+  .har-experiment-tablist {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 0 0 10px;
+    scroll-snap-type: x proximity;
+  }
+
+  .har-experiment-tab {
+    flex: 0 0 auto;
+    grid-template-columns: auto auto;
+    min-height: 48px;
+    padding: 10px 4px 10px 14px;
+    scroll-snap-align: center;
+  }
+
+  .har-experiment-tab strong {
+    display: none;
+  }
+
+  .har-experiment-tab em {
+    display: inline;
+    font-size: 1rem;
+  }
+
+  .har-experiment-tab.has-divider {
+    margin-top: 0;
+    margin-left: 16px;
+  }
+
+  .har-experiment-tab.has-divider::before {
+    top: 12px;
+    bottom: 12px;
+    left: -10px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .har-experiment-tab.is-active::after {
+    height: 26px;
+  }
+
+  .hardware-drift-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .model-impact-main,
+  .signal-alignment-section,
+  .later-drift-card,
+  .reduced-sensors-main,
+    .reduced-explanation-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .augmentation-methods {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .augmentation-main-grid,
+    .augmentation-conclusion {
+      grid-template-columns: 1fr;
+    }
+
+    .har-results-grid,
+    .har-results-footer,
+    .har-results-conclusion-body {
+      grid-template-columns: 1fr;
+    }
+
+    .har-result-block:first-child {
+      grid-row: auto;
+    }
+
+    .har-result-block {
+      min-height: 260px;
+    }
+
+    .augmentation-demo-header,
+    .signal-chaos-demo,
+    .condition-selector {
+      grid-template-columns: 1fr;
+    }
+
+    .model-node {
+      justify-self: center;
+    }
+
+    .model-node i {
+      display: none;
+    }
+
+    .transition-results-grid,
+  .transition-conclusion,
+  .transition-state-readout,
+  .expected-observed-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .transition-state-readout h3,
+  .transition-conclusion h3 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .expected-observed-strip {
+    display: grid;
+  }
+
+  .activity-track-row {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .transition-model-window {
+    font-size: 0.72rem;
+  }
+
+  .model-diagram-panel,
+  .reduced-diagram-panel {
+    min-height: auto;
+  }
+
+  .human-sensor-diagram,
+  .reduced-human-diagram {
+    width: min(82vw, 330px);
+  }
+
+  .signal-track-panel {
+    margin-top: 0;
+  }
+
+  .later-view-options,
+  .sensor-config-picker div {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .drop-comparison-strip button {
+    grid-template-columns: 78px minmax(0, 1fr) 58px;
+  }
+
+  .drift-simulation-header,
+  .jitter-chart-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .drift-sensor-row {
+    grid-template-columns: 38px minmax(120px, 1fr) 64px;
+    gap: 10px;
+  }
+
+  .har-system-section {
+    min-height: auto;
+    padding: 72px 0 44px;
+  }
+
+  .prototype-photo-frame {
+    min-height: 360px;
+  }
+
+  .prototype-callouts {
+    display: none;
+  }
+
+  .prototype-callout-list {
+    display: grid;
+  }
+
+  .pipeline-track {
+    grid-template-columns: 1fr;
+  }
+
+  .pipeline-stage {
+    min-height: 56px;
+  }
+
+  .pipeline-stage:not(:last-child)::after {
+    right: auto;
+    bottom: -14px;
+    transform: rotate(90deg);
+  }
+
+    .har-system-section.has-pipeline-entered .pipeline-packet {
+    animation: packetTravelMobile 3600ms ease-in-out 180ms forwards;
+  }
+
+  .sensor-drift-section {
+    min-height: auto;
+    padding: 72px 0 44px;
+  }
+
+  .drift-lab {
+    padding: 22px 16px;
+  }
+
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .alignment-guides {
+    inset: 62px 0 58px 0;
+  }
+
+  .timeline-helper {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 4px;
+  }
+
+}
+
+@keyframes packetTravelMobile {
+  0% {
+    top: 8%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  10%,
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 92%;
+    left: 50%;
+    opacity: 0;
+  }
+}
