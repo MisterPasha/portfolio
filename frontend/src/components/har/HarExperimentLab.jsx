@@ -31,6 +31,15 @@ export default function HarExperimentLab() {
   const [activeExperiment, setActiveExperiment] = useState('hardware')
   const panel = experimentPanels[activeExperiment]
 
+  const scrollToSection = (sectionId) => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }
+
   return (
     <section className="har-experiment-lab" id="har-experiment-lab" aria-label="Experiment Lab">
       <div className="har-lab-shell">
@@ -53,6 +62,15 @@ export default function HarExperimentLab() {
               {typeof panel === 'object' && panel.eyebrow ? <ExperimentPlaceholder experiment={panel} /> : panel}
             </motion.div>
           </AnimatePresence>
+
+          <div className="har-panel-jump-controls" aria-label="Section navigation">
+            <button type="button" onClick={() => scrollToSection('experiments-navbar')}>
+              [ EXPERIMENTS ↑ ]
+            </button>
+            <button type="button" onClick={() => scrollToSection('projects-navbar')}>
+              [ PROJECTS ↑ ]
+            </button>
+          </div>
         </div>
       </div>
     </section>

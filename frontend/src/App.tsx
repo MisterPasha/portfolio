@@ -191,7 +191,7 @@ function App() {
         </p>
 
         <div className="projects-switcher">
-          <nav className="project-tabs" aria-label="Project selector">
+          <nav className="project-tabs" id="projects-navbar" aria-label="Project selector">
             {projectItems.map((item, index) => (
               <button
                 className={`project-tab ${activeProjectIndex === index ? 'is-active' : ''}`}

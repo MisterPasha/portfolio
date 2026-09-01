@@ -10,17 +10,26 @@ const experiments = [
 ]
 
 export default function ExperimentNav({ activeExperiment, setActiveExperiment }) {
+  const tablistRef = useRef(null)
   const tabRefs = useRef([])
   const activeIndex = experiments.findIndex((experiment) => experiment.id === activeExperiment)
 
   useEffect(() => {
-    tabRefs.current[activeIndex]?.scrollIntoView({ inline: 'center', block: 'nearest' })
+    const tablist = tablistRef.current
+    const activeTab = tabRefs.current[activeIndex]
+
+    if (!tablist || !activeTab || tablist.scrollWidth <= tablist.clientWidth) return
+
+    tablist.scrollTo({
+      left: activeTab.offsetLeft - (tablist.clientWidth - activeTab.clientWidth) / 2,
+      behavior: 'auto',
+    })
   }, [activeIndex])
 
   const focusExperiment = (index) => {
     const nextIndex = (index + experiments.length) % experiments.length
     setActiveExperiment(experiments[nextIndex].id)
-    tabRefs.current[nextIndex]?.focus()
+    tabRefs.current[nextIndex]?.focus({ preventScroll: true })
   }
 
   const handleKeyDown = (event, index) => {
@@ -36,9 +45,9 @@ export default function ExperimentNav({ activeExperiment, setActiveExperiment })
   }
 
   return (
-    <nav className="har-experiment-nav" aria-label="Experiments">
+    <nav className="har-experiment-nav" id="experiments-navbar" aria-label="Experiments">
       <p>EXPERIMENTS</p>
-      <div className="har-experiment-tablist" role="tablist" aria-label="HAR experiment selector">
+      <div className="har-experiment-tablist" role="tablist" aria-label="HAR experiment selector" ref={tablistRef}>
         {experiments.map((experiment, index) => (
           <button
             className={`har-experiment-tab ${experiment.id === activeExperiment ? 'is-active' : ''} ${experiment.hasDivider ? 'has-divider' : ''}`}

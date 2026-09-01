@@ -1028,6 +1028,45 @@
   outline: 0;
 }
 
+.har-panel-jump-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px clamp(18px, 3vw, 34px);
+  margin-top: clamp(34px, 5vw, 64px);
+  padding-top: clamp(20px, 4vw, 34px);
+  border-top: 1px solid rgba(209, 207, 209, 0.12);
+  font-family: "Geo", sans-serif;
+}
+
+.har-panel-jump-controls button {
+  min-height: 44px;
+  padding: 10px 0;
+  color: rgba(209, 207, 209, 0.72);
+  font: inherit;
+  font-size: clamp(0.98rem, 1.35vw, 1.14rem);
+  letter-spacing: 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(57, 255, 20, 0.34);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.har-panel-jump-controls button:hover,
+.har-panel-jump-controls button:focus-visible {
+  color: #39ff14;
+  border-color: rgba(57, 255, 20, 0.72);
+  transform: translateY(-2px);
+}
+
+.har-panel-jump-controls button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 5px;
+}
+
 .hardware-drift-experiment {
   display: grid;
   gap: clamp(34px, 5vw, 58px);
@@ -3830,9 +3869,13 @@
       grid-row: auto;
     }
 
-    .har-result-block {
-      min-height: 260px;
-    }
+  .har-result-block {
+    min-height: 260px;
+  }
+
+  .har-panel-jump-controls {
+    margin-top: 42px;
+  }
 
     .augmentation-demo-header,
     .signal-chaos-demo,
@@ -3968,6 +4011,110 @@
     margin-top: 4px;
   }
 
+}
+
+@media (max-width: 560px) {
+  .har-results-panel {
+    gap: 30px;
+    padding-bottom: 56px;
+  }
+
+  .har-results-hero h2 {
+    font-size: clamp(2.05rem, 13vw, 3.5rem);
+    line-height: 1.02;
+  }
+
+  .har-results-grid {
+    gap: 0;
+  }
+
+  .har-result-block,
+  .har-result-block:first-child {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: auto;
+    padding: 26px 0 28px;
+  }
+
+  .har-result-block strong {
+    font-size: clamp(2.55rem, 15vw, 4.2rem);
+    line-height: 0.9;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .har-result-block p {
+    max-width: none;
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .har-result-block small {
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
+  .result-mini-lines,
+  .result-mini-slope,
+  .result-mini-bars {
+    width: min(100%, 300px);
+    height: 58px;
+    justify-self: stretch;
+    opacity: 0.62;
+  }
+
+  .result-mini-lines {
+    gap: 8px;
+  }
+
+  .result-mini-lines i:nth-child(2) {
+    margin-left: 8%;
+  }
+
+  .result-mini-lines i:nth-child(3) {
+    margin-left: 18%;
+  }
+
+  .result-mini-slope::before {
+    top: 31px;
+  }
+
+  .result-mini-slope i {
+    top: 18px;
+    width: 86%;
+  }
+
+  .result-mini-bars i {
+    height: 10px;
+  }
+
+  .result-mini-bars i:first-child {
+    top: 14px;
+  }
+
+  .result-mini-bars i:last-child {
+    top: 38px;
+  }
+
+  .har-results-conclusion-body {
+    gap: 18px;
+  }
+
+  .hardware-byte-table p {
+    display: grid;
+    gap: 4px;
+  }
+
+  .har-panel-jump-controls {
+    display: grid;
+    gap: 10px;
+    margin-top: 34px;
+  }
+
+  .har-panel-jump-controls button {
+    width: 100%;
+    text-align: left;
+  }
 }
 
 @keyframes packetTravelMobile {
