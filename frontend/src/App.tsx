@@ -1,16 +1,17 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import FuzzyText from '@/components/FuzzyText'
 import GradientText from '@/components/GradientText'
 import GradientWaves from '@/components/GradientWaves'
 import Particles from '@/components/Particles'
 import HarCaseStudy from '@/components/har/HarCaseStudy'
+import DigisoftCaseStudy from '@/components/digisoft/DigisoftCaseStudy'
 import meImage from '@/assets/me.png'
 
 const navItems = ['ABOUT', 'PROJECTS', 'EXPERIENCE', 'LAB', 'CHAT', 'CONTACT']
 const projectItems = [
   'ACTIVITY RECOGNITION',
-  'CHATBOT',
+  'DIGISOFT',
   'THIS PORTFOLIO',
   'KUMO MOCHI',
 ]
@@ -26,13 +27,12 @@ const statusRows = [
 
 function App() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0)
-  const projectDisplayRef = useRef<HTMLDivElement>(null)
 
   const handleProjectTabClick = (index: number) => {
     setActiveProjectIndex(index)
 
     window.requestAnimationFrame(() => {
-      projectDisplayRef.current?.scrollIntoView({
+      document.getElementById('projects-navbar')?.scrollIntoView({
         behavior: 'auto',
         block: 'start',
       })
@@ -206,9 +206,11 @@ function App() {
           </nav>
         </div>
 
-        <div className="project-display" ref={projectDisplayRef}>
+        <div className="project-display">
           {activeProjectIndex === 0 ? (
             <HarCaseStudy />
+          ) : activeProjectIndex === 1 ? (
+            <DigisoftCaseStudy />
           ) : (
             <div className="project-placeholder">
               <p>{projectItems[activeProjectIndex]}</p>

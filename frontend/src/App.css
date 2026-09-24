@@ -18,7 +18,7 @@
 .app-shell {
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: #0b0a0a;
 }
 
@@ -306,7 +306,7 @@
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  overflow: hidden;
+  overflow: clip;
   background:
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
@@ -480,6 +480,7 @@
 }
 
 .project-display {
+  display: flow-root;
   margin-top: clamp(52px, 8vw, 96px);
 }
 
