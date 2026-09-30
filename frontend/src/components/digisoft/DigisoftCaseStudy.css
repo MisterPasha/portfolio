@@ -1199,6 +1199,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  min-width: 0;
   min-height: 48px;
   padding: 0 14px;
   color: rgba(244, 239, 245, 0.82);
@@ -1213,6 +1214,7 @@
 
 .rag-question-field p {
   margin: 0;
+  min-width: 0;
   overflow: hidden;
   font-family: "Geo", sans-serif;
   font-size: clamp(0.86rem, 1.1vw, 0.98rem);
@@ -1855,6 +1857,39 @@
 
   .rag-workbench {
     padding: 14px;
+    overflow: clip;
+  }
+
+  .rag-demo-area,
+  .rag-demo-controls,
+  .rag-question-field,
+  .rag-presets,
+  .rag-workbench,
+  .rag-process-area,
+  .rag-process-area > * {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .rag-presets button,
+  .rag-panel-label,
+  .rag-panel-label span,
+  .rag-query-panel > span,
+  .rag-answer-panel > span,
+  .rag-supporting-copy,
+  .rag-explainer p {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .rag-panel-label {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .rag-panel-label span {
+    white-space: normal;
   }
 
   .rag-pipeline-rail {
