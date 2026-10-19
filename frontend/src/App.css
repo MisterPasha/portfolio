@@ -18,7 +18,7 @@
 .app-shell {
   width: 100%;
   min-height: 100vh;
-  overflow-x: clip;
+  overflow: clip;
   background: #0b0a0a;
 }
 
@@ -298,6 +298,30 @@
 .about-action-button:focus-visible {
   outline: 1px solid currentColor;
   outline-offset: 5px;
+}
+
+.ascii-transition {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 600px;
+  /* The extended artwork must not intercept neighboring sections' input.
+     GradientASCII listens on window, so its own interactions still work. */
+  pointer-events: none;
+}
+
+.ascii-transition .ascii-transition-art {
+  position: absolute;
+  inset: -560px 0;
+  height: calc(100% + 1120px);
+  /* Let the halo overlap its neighbors and fade before the canvas ends. */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 20%,
+    #000 80%,
+    transparent
+  );
 }
 
 .projects-section {

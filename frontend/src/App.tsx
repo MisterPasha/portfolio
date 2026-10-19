@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { animate } from 'motion'
 import './App.css'
 import FuzzyText from '@/components/FuzzyText'
 import GradientText from '@/components/GradientText'
 import GradientWaves from '@/components/GradientWaves'
+import GradientASCII from '@/components/GradientASCII'
+import ConstellationMenu from '@/components/ConstellationMenu'
 import Particles from '@/components/Particles'
 import HarCaseStudy from '@/components/har/HarCaseStudy'
 import DigisoftCaseStudy from '@/components/digisoft/DigisoftCaseStudy'
@@ -27,6 +30,36 @@ const statusRows = [
 
 function App() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0)
+  const [projectOpenRequest, setProjectOpenRequest] = useState(0)
+
+  useEffect(() => {
+    if (!projectOpenRequest) return
+    const section = document.getElementById('projects')
+    if (!section) return
+    const destination = section.getBoundingClientRect().top + window.scrollY
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, destination)
+      return
+    }
+    const scroll = animate(window.scrollY, destination, {
+      duration: 1.8,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: value => window.scrollTo(0, value),
+    })
+    const stop = () => scroll.stop()
+    const onKey = (event: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) stop()
+    }
+    window.addEventListener('wheel', stop, { passive: true })
+    window.addEventListener('touchstart', stop, { passive: true })
+    window.addEventListener('keydown', onKey)
+    return () => {
+      stop()
+      window.removeEventListener('wheel', stop)
+      window.removeEventListener('touchstart', stop)
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [projectOpenRequest])
 
   const handleProjectTabClick = (index: number) => {
     setActiveProjectIndex(index)
@@ -173,7 +206,24 @@ function App() {
       </div>
     </section>
 
-    <section className="projects-section" id="projects" aria-label="Projects">
+    <div className="ascii-transition">
+      <GradientASCII
+        className="ascii-transition-art"
+        aria-hidden="true"
+        colors={["#78350f", "#f59e0b", "#ffffff"]}
+        shape="eclipse"
+        scale={600 / 1720}
+        characters=" .:-=+*#%@"
+        cellSize={12}
+        density={0.77}
+        glow={1.35}
+        flicker={0.53}
+        grain={0}
+      />
+      <ConstellationMenu onOpenProjects={() => setProjectOpenRequest(request => request + 1)} />
+    </div>
+
+    {projectOpenRequest > 0 && <section className="projects-section" id="projects" aria-label="Projects">
       <div className="projects-atmosphere" aria-hidden="true" />
       <div className="projects-content">
         <GradientText
@@ -219,7 +269,7 @@ function App() {
           )}
         </div>
       </div>
-    </section>
+    </section>}
     </main>
   )
 }
