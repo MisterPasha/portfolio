@@ -10,6 +10,7 @@ const FuzzyText = ({
   baseIntensity = 0.18,
   hoverIntensity = 0.5,
   fuzzRange = 30,
+  horizontalPadding = fuzzRange + 20,
   fps = 60,
   direction = 'horizontal',
   transitionDuration = 0,
@@ -39,16 +40,6 @@ const FuzzyText = ({
       const computedFontFamily =
         fontFamily === 'inherit' ? window.getComputedStyle(canvas).fontFamily || 'sans-serif' : fontFamily;
 
-      const fontSizeStr = typeof fontSize === 'number' ? `${fontSize}px` : fontSize;
-      const fontString = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
-
-      try {
-        await document.fonts.load(fontString);
-      } catch {
-        await document.fonts.ready;
-      }
-      if (isCancelled) return;
-
       let numericFontSize;
       if (typeof fontSize === 'number') {
         numericFontSize = fontSize;
@@ -61,13 +52,23 @@ const FuzzyText = ({
         document.body.removeChild(temp);
       }
 
+      // Resolve responsive CSS sizing before passing it to canvas or font loading.
+      // Some browsers reject CSS math functions in these font shorthands.
+      const fontString = `${fontWeight} ${numericFontSize}px ${computedFontFamily}`;
+      try {
+        await document.fonts.load(fontString);
+      } catch {
+        await document.fonts.ready;
+      }
+      if (isCancelled) return;
+
       const text = React.Children.toArray(children).join('');
 
       const offscreen = document.createElement('canvas');
       const offCtx = offscreen.getContext('2d');
       if (!offCtx) return;
 
-      offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
+      offCtx.font = fontString;
       offCtx.textBaseline = 'alphabetic';
 
       let totalWidth = 0;
@@ -96,7 +97,7 @@ const FuzzyText = ({
       offscreen.height = tightHeight;
 
       const xOffset = extraWidthBuffer / 2;
-      offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
+      offCtx.font = fontString;
       offCtx.textBaseline = 'alphabetic';
 
       if (gradient && Array.isArray(gradient) && gradient.length >= 2) {
@@ -117,7 +118,7 @@ const FuzzyText = ({
         offCtx.fillText(text, xOffset - actualLeft, actualAscent);
       }
 
-      const horizontalMargin = fuzzRange + 20;
+      const horizontalMargin = horizontalPadding;
       const verticalMargin = 0;
       canvas.width = offscreenWidth + horizontalMargin * 2;
       canvas.height = tightHeight + verticalMargin * 2;
@@ -318,6 +319,7 @@ const FuzzyText = ({
     baseIntensity,
     hoverIntensity,
     fuzzRange,
+    horizontalPadding,
     fps,
     direction,
     transitionDuration,

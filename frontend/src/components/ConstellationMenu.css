@@ -115,8 +115,10 @@
   .constellation-menu { inset-block: 65px; }
   .constellation-node {
     gap: 7px;
+    max-width: 46%;
     padding: 10px;
     font-size: 11px;
+    white-space: normal;
   }
   .constellation-node-index { display: none; }
   .constellation-node-star { font-size: 13px; }

@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import './ConstellationMenu.css'
 
 const destinations = [
-  { label: 'My Skills', target: 'skills', x: 23, y: 24 },
+  { label: 'My Skills and Projects', target: 'skills', x: 23, y: 24 },
   { label: 'My Experience', target: 'experience', x: 73, y: 19 },
-  { label: 'Project Lab', target: 'projects', x: 50, y: 51 },
+  { label: 'Selected Work', target: 'projects', x: 50, y: 51 },
   { label: 'Contact Me', target: 'contact', x: 25, y: 77 },
   { label: 'Pavel-Bot', target: 'chat', x: 76, y: 73 },
 ]
@@ -24,7 +24,12 @@ function makeConnections() {
   return edges
 }
 
-export default function ConstellationMenu({ onOpenProjects }: { onOpenProjects: () => void }) {
+export default function ConstellationMenu({ onOpenProjects, onOpenSkills, onOpenExperience, onOpenContact }: {
+  onOpenProjects: () => void
+  onOpenSkills: () => void
+  onOpenExperience: () => void
+  onOpenContact: () => void
+}) {
   const fieldRef = useRef<HTMLElement>(null)
   const nodesRef = useRef<(HTMLButtonElement | null)[]>([])
   const linesRef = useRef<(SVGLineElement | null)[]>([])
@@ -140,6 +145,21 @@ export default function ConstellationMenu({ onOpenProjects }: { onOpenProjects: 
   }, [connections])
 
   const navigate = (label: string, target: string) => {
+    if (target === 'contact') {
+      onOpenContact()
+      setAnnouncement('')
+      return
+    }
+    if (target === 'experience') {
+      onOpenExperience()
+      setAnnouncement('')
+      return
+    }
+    if (target === 'skills') {
+      onOpenSkills()
+      setAnnouncement('')
+      return
+    }
     if (target === 'projects') {
       onOpenProjects()
       setAnnouncement('')

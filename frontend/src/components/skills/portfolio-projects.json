@@ -1,0 +1,354 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Project-to-skills reverse map; project GitHub/live/certificate links are separate and never inferred.",
+  "projects": [
+    {
+      "id": "portfolio",
+      "name": "Personal Portfolio",
+      "summary": "An interactive portfolio with a RAG-powered way to explore my background.",
+      "projectType": "personal",
+      "githubUrl": "https://github.com/MisterPasha/portfolio",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "llms_ollama",
+        "rag_langchain",
+        "python",
+        "sql",
+        "postgresql",
+        "react",
+        "javascript",
+        "supabase",
+        "api_integration",
+        "full_stack",
+        "html_css_responsive",
+        "aws",
+        "model_serving",
+        "environment_config",
+        "git_github",
+        "ai_coding_agents",
+        "debugging"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "software_development",
+        "cloud_devops",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "kumo_mochi",
+      "name": "Kumo Mochi",
+      "summary": "A customer-facing website for a handmade mochi business.",
+      "projectType": "client",
+      "githubUrl": null,
+      "liveUrl": "https://www.kumomochi.ee/",
+      "credentialUrl": null,
+      "skillIds": [
+        "sql",
+        "postgresql",
+        "react",
+        "javascript",
+        "supabase",
+        "api_integration",
+        "full_stack",
+        "auth_rls",
+        "html_css_responsive",
+        "vercel",
+        "environment_config",
+        "git_github",
+        "ai_coding_agents",
+        "client_communication",
+        "debugging"
+      ],
+      "domainIds": [
+        "data_engineering",
+        "software_development",
+        "cloud_devops",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "hi5",
+      "name": "Hi5",
+      "summary": "A working MVP for professional matchmaking, built collaboratively during a software bootcamp.",
+      "projectType": "team",
+      "githubUrl": "https://github.com/CaomhinB/hi5",
+      "liveUrl": "https://www.hi5project.co.uk/",
+      "credentialUrl": null,
+      "skillIds": [
+        "sql",
+        "postgresql",
+        "nextjs",
+        "typescript",
+        "javascript",
+        "supabase",
+        "api_integration",
+        "full_stack",
+        "auth_rls",
+        "html_css_responsive",
+        "vercel",
+        "environment_config",
+        "git_github",
+        "ai_coding_agents",
+        "project_management",
+        "agile_collaboration",
+        "technical_documentation",
+        "debugging"
+      ],
+      "domainIds": [
+        "data_engineering",
+        "software_development",
+        "cloud_devops",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "mlops",
+      "name": "MLOps Pipelines & Models",
+      "summary": "Experiments in ML development, cloud integration and deployable model workflows.",
+      "projectType": "personal",
+      "githubUrl": "https://github.com/MisterPasha/MLOps-Project",
+      "liveUrl": null,
+      "credentialUrl": "https://www.linkedin.com/learning/certificates/a0c928872e01f0e72ae6839e5e3cb3ac57b664814911e0a65c9d8a0b92e1151b?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3Bea7vuvbjQqm6AE3qljMSOA%3D%3D",
+      "skillIds": [
+        "pytorch",
+        "hugging_face",
+        "nlp_classification",
+        "python",
+        "pandas",
+        "numpy",
+        "api_integration",
+        "aws",
+        "azure_ml",
+        "boto3",
+        "model_serving",
+        "cloud_storage",
+        "environment_config",
+        "mlops_workflows",
+        "git_github"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "software_development",
+        "cloud_devops",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "rag_assistant",
+      "name": "RAG-Powered Customer Support Assistant",
+      "summary": "A local-LLM-powered support chatbot with vector retrieval and deployment automation.",
+      "projectType": "personal",
+      "githubUrl": "https://github.com/MisterPasha/LLM_ChatBot",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "llms_ollama",
+        "rag_langchain",
+        "faiss_vector_search",
+        "python",
+        "api_integration",
+        "aws",
+        "docker_compose",
+        "github_actions",
+        "model_serving",
+        "cloud_storage",
+        "environment_config",
+        "mlops_workflows",
+        "git_github",
+        "debugging"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "software_development",
+        "cloud_devops",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "wearable_har",
+      "name": "Wearable Activity Recognition",
+      "summary": "Dissertation research on multi-IMU sensor misalignment and robustness of activity-recognition models.",
+      "projectType": "academic",
+      "githubUrl": "https://github.com/MisterPasha/HAR-and-Pain-detection",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "pytorch",
+        "scikit_learn",
+        "deep_learning_architectures",
+        "python",
+        "pandas",
+        "numpy",
+        "matplotlib_viz",
+        "embedded_cpp",
+        "rfduino_microcontrollers",
+        "imu_sensors",
+        "ble_wireless",
+        "i2c_integration",
+        "multi_sensor_acquisition",
+        "sensor_misalignment",
+        "wearable_iot",
+        "sensor_time_series",
+        "git_github",
+        "technical_documentation",
+        "experimental_design",
+        "statistics_evaluation",
+        "debugging"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "embedded_systems",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "lunar_lander",
+      "name": "Q-Learning & Genetic Algorithms",
+      "summary": "Experiments training a Lunar Lander agent with reinforcement learning and genetic algorithms.",
+      "projectType": "academic",
+      "githubUrl": "https://github.com/MisterPasha/Q-learning-and-Genetic-Algorithms-with-Lunar-Lander",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "pytorch",
+        "rl_genetic_algorithms",
+        "python",
+        "numpy",
+        "matplotlib_viz",
+        "experimental_design",
+        "statistics_evaluation"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "mood_recognition",
+      "name": "Mood Recognition & Classification",
+      "summary": "Image preprocessing, feature extraction and classical ML mood classification.",
+      "projectType": "academic",
+      "githubUrl": "https://github.com/MisterPasha/mood_recognition_in-images",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "scikit_learn",
+        "computer_vision",
+        "python",
+        "pandas",
+        "numpy",
+        "matplotlib_viz",
+        "statistics_evaluation"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "facial_landmarks",
+      "name": "Facial Landmark Prediction",
+      "summary": "Computer vision and ML techniques for predicting facial landmark positions.",
+      "projectType": "academic",
+      "githubUrl": "https://github.com/MisterPasha/facial_landmark_prediction",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "scikit_learn",
+        "computer_vision",
+        "python",
+        "numpy",
+        "matplotlib_viz",
+        "statistics_evaluation"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "world_conquest",
+      "name": "World Conquest Game",
+      "summary": "A collaborative Python desktop game built with testing and documentation.",
+      "projectType": "team",
+      "githubUrl": "https://github.com/MisterPasha/world_conquest",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "python",
+        "pygame_tkinter",
+        "git_github",
+        "agile_collaboration",
+        "unit_system_testing",
+        "technical_documentation"
+      ],
+      "domainIds": [
+        "data_engineering",
+        "software_development",
+        "tools_engineering"
+      ]
+    },
+    {
+      "id": "earthquake_etl",
+      "name": "Cloud ETL Pipeline for Earthquake Data",
+      "summary": "An Azure/Databricks data engineering pipeline using PySpark and medallion architecture.",
+      "projectType": "personal",
+      "githubUrl": null,
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "python",
+        "pandas",
+        "sql",
+        "pyspark",
+        "databricks_delta",
+        "etl_medallion",
+        "azure_data_lake",
+        "api_integration",
+        "azure_ml",
+        "cloud_storage"
+      ],
+      "domainIds": [
+        "data_engineering",
+        "software_development",
+        "cloud_devops"
+      ]
+    },
+    {
+      "id": "propaganda_nlp",
+      "name": "Propaganda Detection & Classification",
+      "summary": "NLP research on propaganda classification and text-span detection.",
+      "projectType": "academic",
+      "githubUrl": "https://github.com/MisterPasha/Propoganda-Detection-and-Classification-using-NLE",
+      "liveUrl": null,
+      "credentialUrl": null,
+      "skillIds": [
+        "pytorch",
+        "scikit_learn",
+        "hugging_face",
+        "nlp_classification",
+        "deep_learning_architectures",
+        "python",
+        "numpy",
+        "git_github",
+        "technical_documentation",
+        "experimental_design",
+        "statistics_evaluation"
+      ],
+      "domainIds": [
+        "ai_ml",
+        "data_engineering",
+        "tools_engineering"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,793 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Domain-to-skills map; each skill carries its supporting project IDs and a personalised description.",
+  "proficiencyScale": {
+    "core": "Repeated and substantial practical use across projects or academic work.",
+    "applied": "Used hands-on in one or more projects.",
+    "working": "Working familiarity, experiments or earlier-stage hands-on practice; not claimed as production expertise.",
+    "exploratory": "Primarily conceptual or introductory exposure."
+  },
+  "domains": [
+    {
+      "id": "ai_ml",
+      "name": "AI & Machine Learning",
+      "description": "Deep learning, NLP, computer vision and retrieval-based LLM applications.",
+      "skillIds": [
+        "pytorch",
+        "scikit_learn",
+        "hugging_face",
+        "llms_ollama",
+        "rag_langchain",
+        "faiss_vector_search",
+        "nlp_classification",
+        "computer_vision",
+        "deep_learning_architectures",
+        "rl_genetic_algorithms"
+      ]
+    },
+    {
+      "id": "data_engineering",
+      "name": "Data Engineering",
+      "description": "Python-based analytics, SQL, distributed processing and cloud ETL.",
+      "skillIds": [
+        "python",
+        "pandas",
+        "numpy",
+        "sql",
+        "postgresql",
+        "pyspark",
+        "databricks_delta",
+        "etl_medallion",
+        "azure_data_lake",
+        "matplotlib_viz"
+      ]
+    },
+    {
+      "id": "embedded_systems",
+      "name": "Embedded Systems",
+      "description": "Wireless wearable sensors, microcontrollers and motion-data acquisition.",
+      "skillIds": [
+        "embedded_cpp",
+        "rfduino_microcontrollers",
+        "imu_sensors",
+        "ble_wireless",
+        "i2c_integration",
+        "multi_sensor_acquisition",
+        "sensor_misalignment",
+        "wearable_iot",
+        "sensor_time_series"
+      ]
+    },
+    {
+      "id": "software_development",
+      "name": "Software Development",
+      "description": "Frontend frameworks, full-stack applications, APIs and application data.",
+      "skillIds": [
+        "react",
+        "nextjs",
+        "typescript",
+        "javascript",
+        "supabase",
+        "api_integration",
+        "full_stack",
+        "auth_rls",
+        "pygame_tkinter",
+        "html_css_responsive"
+      ]
+    },
+    {
+      "id": "cloud_devops",
+      "name": "Cloud & DevOps",
+      "description": "Containerisation, AWS/Azure infrastructure, deployment and CI/CD.",
+      "skillIds": [
+        "aws",
+        "azure_ml",
+        "docker_compose",
+        "github_actions",
+        "vercel",
+        "boto3",
+        "model_serving",
+        "cloud_storage",
+        "environment_config",
+        "mlops_workflows"
+      ]
+    },
+    {
+      "id": "tools_engineering",
+      "name": "Tools & Engineering",
+      "description": "Collaboration, testing, planning, experimentation and effective delivery.",
+      "skillIds": [
+        "git_github",
+        "ai_coding_agents",
+        "project_management",
+        "agile_collaboration",
+        "unit_system_testing",
+        "technical_documentation",
+        "experimental_design",
+        "statistics_evaluation",
+        "client_communication",
+        "debugging"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "pytorch",
+      "name": "PyTorch",
+      "domainId": "ai_ml",
+      "proficiency": "core",
+      "description": "I've used PyTorch to adapt and experiment with deep-learning models for wearable activity recognition, NLP and reinforcement-learning coursework.",
+      "projectIds": [
+        "mlops",
+        "wearable_har",
+        "lunar_lander",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "scikit_learn",
+      "name": "scikit-learn",
+      "domainId": "ai_ml",
+      "proficiency": "core",
+      "description": "I've used scikit-learn extensively for classical classifiers, preprocessing and evaluation across mood recognition, facial landmarks and HAR experiments.",
+      "projectIds": [
+        "wearable_har",
+        "mood_recognition",
+        "facial_landmarks",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "hugging_face",
+      "name": "Hugging Face Transformers",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've worked with transformer models, including ALBERT, for propaganda classification and broader ML experimentation.",
+      "projectIds": [
+        "propaganda_nlp",
+        "mlops"
+      ]
+    },
+    {
+      "id": "llms_ollama",
+      "name": "LLMs & Ollama",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've integrated local LLM inference through Ollama in my support assistant and am applying LLM capabilities to this portfolio.",
+      "projectIds": [
+        "rag_assistant",
+        "portfolio"
+      ]
+    },
+    {
+      "id": "rag_langchain",
+      "name": "RAG & LangChain",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've built retrieval-augmented workflows with LangChain so my chatbot applications can answer questions using relevant retrieved context.",
+      "projectIds": [
+        "rag_assistant",
+        "portfolio"
+      ]
+    },
+    {
+      "id": "faiss_vector_search",
+      "name": "FAISS & Vector Search",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've used FAISS to index document embeddings and retrieve relevant passages for my customer support assistant.",
+      "projectIds": [
+        "rag_assistant"
+      ]
+    },
+    {
+      "id": "nlp_classification",
+      "name": "NLP & Text Classification",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've explored text classification and span detection with methods ranging from TF-IDF to transformer and BiLSTM–CRF models.",
+      "projectIds": [
+        "propaganda_nlp",
+        "mlops"
+      ]
+    },
+    {
+      "id": "computer_vision",
+      "name": "Computer Vision & OpenCV",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've applied image preprocessing and OpenCV-based techniques in facial landmark prediction alongside image-based mood classification.",
+      "projectIds": [
+        "facial_landmarks",
+        "mood_recognition"
+      ]
+    },
+    {
+      "id": "deep_learning_architectures",
+      "name": "Deep Learning Architectures",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've adapted convolutional and recurrent architectures, including ConvLSTM and BiLSTM–CRF, for wearable motion data and NLP research.",
+      "projectIds": [
+        "wearable_har",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "rl_genetic_algorithms",
+      "name": "Reinforcement Learning & Genetic Algorithms",
+      "domainId": "ai_ml",
+      "proficiency": "applied",
+      "description": "I've implemented and compared Q-learning and genetic-algorithm approaches in a Lunar Lander experiment.",
+      "projectIds": [
+        "lunar_lander"
+      ]
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "domainId": "data_engineering",
+      "proficiency": "core",
+      "description": "Python is my primary programming language, which I've used across ML research, data processing, APIs, automation and application development.",
+      "projectIds": [
+        "portfolio",
+        "mlops",
+        "rag_assistant",
+        "wearable_har",
+        "lunar_lander",
+        "mood_recognition",
+        "facial_landmarks",
+        "world_conquest",
+        "earthquake_etl",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "pandas",
+      "name": "Pandas",
+      "domainId": "data_engineering",
+      "proficiency": "core",
+      "description": "I've used Pandas extensively to inspect, clean and prepare experimental datasets for machine learning and analysis.",
+      "projectIds": [
+        "mlops",
+        "wearable_har",
+        "mood_recognition",
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "numpy",
+      "name": "NumPy",
+      "domainId": "data_engineering",
+      "proficiency": "core",
+      "description": "I've used NumPy intensively throughout my academic ML work for array operations, feature processing and numerical experimentation.",
+      "projectIds": [
+        "mlops",
+        "wearable_har",
+        "lunar_lander",
+        "mood_recognition",
+        "facial_landmarks",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "domainId": "data_engineering",
+      "proficiency": "applied",
+      "description": "I've written SQL for relational application data and used it in cloud data engineering and transformation workflows.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5",
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "domainId": "data_engineering",
+      "proficiency": "applied",
+      "description": "I've worked with PostgreSQL through Supabase to store and query content, users and application relationships.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "pyspark",
+      "name": "PySpark",
+      "domainId": "data_engineering",
+      "proficiency": "applied",
+      "description": "I've used PySpark in my earthquake-data pipeline to process and transform data in a distributed Databricks environment.",
+      "projectIds": [
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "databricks_delta",
+      "name": "Databricks & Delta Lake",
+      "domainId": "data_engineering",
+      "proficiency": "applied",
+      "description": "I've used Databricks and Delta-oriented workflows to organise cloud data transformations for an ETL pipeline.",
+      "projectIds": [
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "etl_medallion",
+      "name": "ETL & Medallion Architecture",
+      "domainId": "data_engineering",
+      "proficiency": "applied",
+      "description": "I've designed a Bronze–Silver–Gold-style pipeline for earthquake data, moving from ingestion through transformation to curated outputs.",
+      "projectIds": [
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "azure_data_lake",
+      "name": "Azure Data Lake Storage",
+      "domainId": "data_engineering",
+      "proficiency": "applied",
+      "description": "I've worked with Azure Data Lake Storage as the storage layer for my cloud earthquake-data pipeline.",
+      "projectIds": [
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "matplotlib_viz",
+      "name": "Matplotlib & Data Visualisation",
+      "domainId": "data_engineering",
+      "proficiency": "core",
+      "description": "I've used Matplotlib to visualise model behaviour, experimental results and patterns in sensor and image datasets.",
+      "projectIds": [
+        "wearable_har",
+        "lunar_lander",
+        "mood_recognition",
+        "facial_landmarks"
+      ]
+    },
+    {
+      "id": "embedded_cpp",
+      "name": "C++ / Arduino",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've used embedded C++ and Arduino-style tooling to develop microcontroller code for my wearable sensing prototype.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "rfduino_microcontrollers",
+      "name": "RFduino & Microcontrollers",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've programmed RFduino-based hardware to collect and transmit body-motion readings during my HAR research.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "imu_sensors",
+      "name": "IMU Motion Sensors",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've worked hands-on with accelerometer and gyroscope data from MPU-series IMUs for wearable activity recognition.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "ble_wireless",
+      "name": "Bluetooth Low Energy (BLE)",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've built a BLE-based wireless link to move sensor measurements from a wearable prototype into my data collection workflow.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "i2c_integration",
+      "name": "I²C & Sensor Integration",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've used I²C-based communication to interface IMU hardware with a microcontroller and collect motion signals.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "multi_sensor_acquisition",
+      "name": "Multi-Sensor Data Acquisition",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've worked with multiple IMU data streams and their timing requirements while preparing activity-recognition experiments.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "sensor_misalignment",
+      "name": "Sensor Alignment & Robustness",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I investigated how misaligned wearable sensors affect a recognition model and evaluated the resulting loss in performance.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "wearable_iot",
+      "name": "Wearable IoT Prototyping",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've combined sensors, microcontrollers and wireless transfer into an experimental wearable system for rehabilitation-oriented research.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "sensor_time_series",
+      "name": "Sensor Time-Series Processing",
+      "domainId": "embedded_systems",
+      "proficiency": "applied",
+      "description": "I've prepared and analysed time-windowed IMU signals as inputs to HAR models and misalignment experiments.",
+      "projectIds": [
+        "wearable_har"
+      ]
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've built interactive React interfaces for my portfolio and the Kumo Mochi customer website.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi"
+      ]
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've used Next.js and its App Router to organise pages and build the Hi5 matchmaking MVP with my team.",
+      "projectIds": [
+        "hi5"
+      ]
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've used TypeScript for typed frontend components and application logic in Hi5.",
+      "projectIds": [
+        "hi5"
+      ]
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've used JavaScript to implement interactive web features and frontend behaviour across my React projects.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've integrated Supabase database and application services into my portfolio, Kumo Mochi and Hi5.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "api_integration",
+      "name": "API Design & Integration",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've connected web interfaces and data services through APIs and worked with API-based chatbot and model-serving workflows.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5",
+        "mlops",
+        "rag_assistant",
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "full_stack",
+      "name": "Full-Stack Web Development",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've worked across frontends, data storage and service integrations to turn the portfolio, Kumo Mochi and Hi5 ideas into usable applications.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "auth_rls",
+      "name": "Authentication & Row-Level Security",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've configured Supabase authentication and data-access policies for web applications with protected user or admin workflows.",
+      "projectIds": [
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "pygame_tkinter",
+      "name": "Pygame & Tkinter",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've built a collaborative Python desktop game using Pygame and Tkinter.",
+      "projectIds": [
+        "world_conquest"
+      ]
+    },
+    {
+      "id": "html_css_responsive",
+      "name": "HTML, CSS & Responsive UI",
+      "domainId": "software_development",
+      "proficiency": "applied",
+      "description": "I've built responsive and interactive layouts for portfolio, e-commerce and professional networking experiences.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "aws",
+      "name": "AWS (EC2, S3, IAM)",
+      "domainId": "cloud_devops",
+      "proficiency": "applied",
+      "description": "My main hands-on AWS services are EC2, S3 and IAM, while my knowledge of other AWS services is mostly experimental or theoretical.",
+      "projectIds": [
+        "portfolio",
+        "mlops",
+        "rag_assistant"
+      ]
+    },
+    {
+      "id": "azure_ml",
+      "name": "Microsoft Azure & Azure ML",
+      "domainId": "cloud_devops",
+      "proficiency": "working",
+      "description": "I've gained practical introductory experience with Azure ML through model-oriented work and training, rather than extensive production use.",
+      "projectIds": [
+        "mlops",
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "docker_compose",
+      "name": "Docker & Docker Compose",
+      "domainId": "cloud_devops",
+      "proficiency": "applied",
+      "description": "I've containerised my RAG chatbot with Docker Compose to make its services easier to run and deploy.",
+      "projectIds": [
+        "rag_assistant"
+      ]
+    },
+    {
+      "id": "github_actions",
+      "name": "GitHub Actions & CI/CD",
+      "domainId": "cloud_devops",
+      "proficiency": "applied",
+      "description": "I've used GitHub Actions to automate repository workflows for my RAG chatbot and practise deployment-oriented CI/CD.",
+      "projectIds": [
+        "rag_assistant"
+      ]
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "domainId": "cloud_devops",
+      "proficiency": "applied",
+      "description": "I've deployed React and Next.js web applications with Vercel, including Kumo Mochi and Hi5.",
+      "projectIds": [
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "boto3",
+      "name": "Boto3 / AWS SDK",
+      "domainId": "cloud_devops",
+      "proficiency": "applied",
+      "description": "I've written Python experiments with Boto3 to interact with AWS services programmatically in my MLOps work.",
+      "projectIds": [
+        "mlops"
+      ]
+    },
+    {
+      "id": "model_serving",
+      "name": "ML Model Serving & APIs",
+      "domainId": "cloud_devops",
+      "proficiency": "working",
+      "description": "I've practised exposing ML and LLM functionality through callable services and deployment-focused experiments.",
+      "projectIds": [
+        "mlops",
+        "rag_assistant",
+        "portfolio"
+      ]
+    },
+    {
+      "id": "cloud_storage",
+      "name": "Cloud Storage (S3 / ADLS)",
+      "domainId": "cloud_devops",
+      "proficiency": "applied",
+      "description": "I've used Amazon S3 and Azure Data Lake Storage in workflows involving application files, ML artefacts and ETL data.",
+      "projectIds": [
+        "mlops",
+        "rag_assistant",
+        "earthquake_etl"
+      ]
+    },
+    {
+      "id": "environment_config",
+      "name": "Cloud Configuration & Secrets",
+      "domainId": "cloud_devops",
+      "proficiency": "working",
+      "description": "I've configured deployment variables, cloud credentials and integration settings while connecting Vercel, Supabase and AWS services.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5",
+        "mlops",
+        "rag_assistant"
+      ]
+    },
+    {
+      "id": "mlops_workflows",
+      "name": "MLOps Workflows",
+      "domainId": "cloud_devops",
+      "proficiency": "working",
+      "description": "I've built experimental MLOps workflows involving model development and cloud integration, and I'm continuing to deepen my production experience.",
+      "projectIds": [
+        "mlops",
+        "rag_assistant"
+      ]
+    },
+    {
+      "id": "git_github",
+      "name": "Git & GitHub",
+      "domainId": "tools_engineering",
+      "proficiency": "core",
+      "description": "I've used Git for version control across my projects and for collaborative branching and merging in the Hi5 team.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5",
+        "mlops",
+        "rag_assistant",
+        "wearable_har",
+        "world_conquest",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "ai_coding_agents",
+      "name": "AI-Assisted Development (Codex / Claude)",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've used Codex and Claude to accelerate frontend implementation while keeping architecture, security and testing decisions under developer review.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5"
+      ]
+    },
+    {
+      "id": "project_management",
+      "name": "Project Management",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've led planning and task allocation for the four-person Hi5 bootcamp team as we worked towards a functional MVP.",
+      "projectIds": [
+        "hi5"
+      ]
+    },
+    {
+      "id": "agile_collaboration",
+      "name": "Agile Collaboration & Team Workflows",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've coordinated iterative tasks and shared development workflows on Hi5 and collaborated on the World Conquest game.",
+      "projectIds": [
+        "hi5",
+        "world_conquest"
+      ]
+    },
+    {
+      "id": "unit_system_testing",
+      "name": "Unit & System Testing",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've written and carried out unit and system testing for World Conquest as part of a collaborative software project.",
+      "projectIds": [
+        "world_conquest"
+      ]
+    },
+    {
+      "id": "technical_documentation",
+      "name": "Technical Documentation",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've produced project and research documentation to explain implementation details, experiment design and team decisions.",
+      "projectIds": [
+        "wearable_har",
+        "world_conquest",
+        "hi5",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "experimental_design",
+      "name": "Experimental Design & Scientific Research",
+      "domainId": "tools_engineering",
+      "proficiency": "core",
+      "description": "I designed controlled wearable-sensor misalignment experiments and studied how those conditions affected HAR model performance.",
+      "projectIds": [
+        "wearable_har",
+        "lunar_lander",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "statistics_evaluation",
+      "name": "Statistical Analysis & Model Evaluation",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've used statistical analysis and validation metrics to compare classifiers and interpret the effects of sensor misalignment.",
+      "projectIds": [
+        "wearable_har",
+        "mood_recognition",
+        "lunar_lander",
+        "facial_landmarks",
+        "propaganda_nlp"
+      ]
+    },
+    {
+      "id": "client_communication",
+      "name": "Client Communication & Requirements",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've translated real client needs into website features and delivery decisions for Kumo Mochi.",
+      "projectIds": [
+        "kumo_mochi"
+      ]
+    },
+    {
+      "id": "debugging",
+      "name": "Debugging & Troubleshooting",
+      "domainId": "tools_engineering",
+      "proficiency": "applied",
+      "description": "I've troubleshot frontend and backend integrations, cloud deployment issues and sensor-to-software workflows across several projects.",
+      "projectIds": [
+        "portfolio",
+        "kumo_mochi",
+        "hi5",
+        "rag_assistant",
+        "wearable_har"
+      ]
+    }
+  ]
+}

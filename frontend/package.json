@@ -6,16 +6,19 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "validate:skills": "node scripts/validate-skills.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@vgpu/wgsl": "^0.6.0",
     "motion": "^12.43.0",
     "ogl": "^1.0.11",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "vgpu": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

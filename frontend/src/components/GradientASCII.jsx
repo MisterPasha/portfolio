@@ -138,7 +138,8 @@ vec3 eclipse(vec2 p, float time, out float order) {
   float rays = noise(vec2(cos(angle), sin(angle)) * 2.2 + time * 0.08) * 0.8 + 0.6;
   float d = length(p) - r;
   float reach = mix(0.07, 0.15, uSoftness) * rays * fit;
-  float t = smoothstep(-0.006, 0.006 + 0.02 * uSoftness, d) * exp(-max(d, 0.0) / reach);
+  // Keep the bright rim proportional to the fitted ring on narrow screens.
+  float t = smoothstep(-0.006 * fit, (0.006 + 0.02 * uSoftness) * fit, d) * exp(-max(d, 0.0) / reach);
   order = clamp(d * 2.0, 0.0, 1.0);
   return vec3(t, t, 0.0);
 }
@@ -524,7 +525,7 @@ const GradientASCII = ({
     };
 
     const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    const view = { width: 1, height: 1, ratio: 1 };
+    const view = { width: 1, height: 1, ratio: 1, scaleMultiplier: 1, cellSize: null };
     const ramp = new Float32Array(MAX_COLORS * 3);
     const clickData = new Float32Array(MAX_CLICKS * 4);
     const clicks = [];
@@ -574,7 +575,7 @@ const GradientASCII = ({
       if (!atlas) return;
       const s = settingsRef.current;
       const u = program.uniforms;
-      const cellH = s.cellSize * view.ratio;
+      const cellH = (view.cellSize ?? s.cellSize) * view.ratio;
       const cellW = cellH * (ATLAS_CELL_W / ATLAS_CELL_H);
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, fieldTarget.textures[0]);
@@ -621,7 +622,7 @@ const GradientASCII = ({
       gl.uniform1i(fu.uShape, s.shape);
       gl.uniform3fv(fu.uRamp, ramp);
       gl.uniform1i(fu.uCount, s.colors.length);
-      gl.uniform1f(fu.uScale, s.scale);
+      gl.uniform1f(fu.uScale, s.scale * view.scaleMultiplier);
       gl.uniform1f(fu.uSoftness, s.softness);
       gl.uniform1f(fu.uFlow, s.flow);
       gl.uniform2f(fu.uSeed, s.variation * 3.17, s.variation * 1.91);
@@ -673,6 +674,11 @@ const GradientASCII = ({
 
     const resize = () => {
       const s = settingsRef.current;
+      // Keep responsive field zoom separate from the ASCII character grid.
+      const styles = window.getComputedStyle(container);
+      view.scaleMultiplier = Math.max(0.01, parseFloat(styles.getPropertyValue('--gradient-ascii-scale-multiplier')) || 1);
+      const cellSizeOverride = parseFloat(styles.getPropertyValue('--gradient-ascii-cell-size'));
+      view.cellSize = Number.isFinite(cellSizeOverride) ? clamp(cellSizeOverride, 6, 64) : null;
       view.width = Math.max(1, container.clientWidth);
       view.height = Math.max(1, container.clientHeight);
       view.ratio = Math.min(s.dpr || window.devicePixelRatio || 1, 2);

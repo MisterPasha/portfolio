@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { animate } from 'motion'
 import './App.css'
 import FuzzyText from '@/components/FuzzyText'
@@ -11,12 +11,14 @@ import HarCaseStudy from '@/components/har/HarCaseStudy'
 import DigisoftCaseStudy from '@/components/digisoft/DigisoftCaseStudy'
 import meImage from '@/assets/me.png'
 
-const navItems = ['ABOUT', 'PROJECTS', 'EXPERIENCE', 'LAB', 'CHAT', 'CONTACT']
+const SkillAtlas = lazy(() => import('@/components/skills/SkillAtlas'))
+const ExperienceSection = lazy(() => import('@/components/experience/ExperienceSection'))
+const ContactSection = lazy(() => import('@/components/contact/ContactSection'))
+
 const projectItems = [
   'ACTIVITY RECOGNITION',
   'DIGISOFT',
-  'THIS PORTFOLIO',
-  'KUMO MOCHI',
+  'DATA PIPELINE',
 ]
 const statusRows = [
   { key: 'name', value: 'Pavel Jermolajev', hint: 'People refer to me as Pav' },
@@ -29,12 +31,20 @@ const statusRows = [
 ]
 
 function App() {
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0)
-  const [projectOpenRequest, setProjectOpenRequest] = useState(0)
+  const [activeProjectIndex, setActiveProjectIndex] = useState<number | null>(null)
+  const [openSection, setOpenSection] = useState<'projects' | 'skills' | 'experience' | 'contact' | null>(null)
+  const [sectionOpenRequest, setSectionOpenRequest] = useState(0)
+  const [skillsInitialMode, setSkillsInitialMode] = useState<'domain' | 'project'>('domain')
+
+  const openMenuSection = (section: 'projects' | 'skills' | 'experience' | 'contact', skillsMode: 'domain' | 'project' = 'domain') => {
+    if (section === 'skills') setSkillsInitialMode(skillsMode)
+    setOpenSection(section)
+    setSectionOpenRequest(request => request + 1)
+  }
 
   useEffect(() => {
-    if (!projectOpenRequest) return
-    const section = document.getElementById('projects')
+    if (!sectionOpenRequest || !openSection) return
+    const section = document.getElementById(openSection)
     if (!section) return
     const destination = section.getBoundingClientRect().top + window.scrollY
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -59,7 +69,7 @@ function App() {
       window.removeEventListener('touchstart', stop)
       window.removeEventListener('keydown', onKey)
     }
-  }, [projectOpenRequest])
+  }, [sectionOpenRequest, openSection])
 
   const handleProjectTabClick = (index: number) => {
     setActiveProjectIndex(index)
@@ -105,33 +115,26 @@ function App() {
         parallaxStrength={0.4}
       />
 
-      <header className="hero-navbar geo-regular" aria-label="Primary navigation">
-        <button className="hero-logo" type="button">
+      <header className="hero-identity geo-regular">
+        <p className="hero-name">
           PAVEL.JERMOLAJEV
-        </button>
+        </p>
 
-        <nav className="hero-nav-links">
-          {navItems.map((item) => (
-            <button className="hero-nav-button" type="button" key={item}>
-              [ {item} ]
-            </button>
-          ))}
-        </nav>
+        <div className="hero-status" role="img" aria-label="Available for work">
+          <FuzzyText
+            fontSize="clamp(2.25rem, calc(4.5rem - 6vw), 3rem)"
+            fontFamily='"Geo", sans-serif'
+            fontWeight={400}
+            color="#39ff14"
+            baseIntensity={0.1}
+            hoverIntensity={0.35}
+            horizontalPadding={12}
+            enableHover
+          >
+            ● Available for work
+          </FuzzyText>
+        </div>
       </header>
-
-      <div className="hero-status geo-regular">
-        <FuzzyText
-          fontSize="clamp(0.4rem, 2.0vw, 2.0rem)"
-          fontFamily = '"Geo", sans-serif'
-          fontWeight = {400}
-          color="#39ff14"
-          baseIntensity={0.1}
-          hoverIntensity={0.35}
-          enableHover
-        >
-          ● Available for work
-        </FuzzyText>
-      </div>
 
       <h1 className="hero-title">
         I build things with code, data, and ideas worth exploring.
@@ -158,7 +161,6 @@ function App() {
 
       <div className="about-content">
         <div className="about-copy">
-          <p className="about-kicker">pavel.current_status</p>
           <h2 className="about-heading">About</h2>
           <p className="about-description">
             Computer Science & AI graduate working across software, machine
@@ -196,14 +198,6 @@ function App() {
         </div>
       </div>
 
-      <div className="about-actions geo-regular">
-        <button className="about-action-button" type="button">
-          [ EXPLORE MY WORK ]
-        </button>
-        <button className="about-action-button" type="button">
-          [ ASK MY AI ↗ ]
-        </button>
-      </div>
     </section>
 
     <div className="ascii-transition">
@@ -220,10 +214,28 @@ function App() {
         flicker={0.53}
         grain={0}
       />
-      <ConstellationMenu onOpenProjects={() => setProjectOpenRequest(request => request + 1)} />
+      <ConstellationMenu onOpenProjects={() => openMenuSection('projects')} onOpenSkills={() => openMenuSection('skills')} onOpenExperience={() => openMenuSection('experience')} onOpenContact={() => openMenuSection('contact')} />
     </div>
 
-    {projectOpenRequest > 0 && <section className="projects-section" id="projects" aria-label="Projects">
+    {openSection === 'contact' && (
+      <Suspense fallback={<section id="contact" className="skills-loading" aria-busy="true">Opening Contact Me…</section>}>
+        <ContactSection />
+      </Suspense>
+    )}
+
+    {openSection === 'experience' && (
+      <Suspense fallback={<section id="experience" className="skills-loading" aria-busy="true">Opening My Experience…</section>}>
+        <ExperienceSection onOpenProjects={() => openMenuSection('skills', 'project')} onOpenSkills={() => openMenuSection('skills')} />
+      </Suspense>
+    )}
+
+    {openSection === 'skills' && (
+      <Suspense fallback={<section id="skills" className="skills-loading" aria-busy="true">Opening the atlas…</section>}>
+        <SkillAtlas key={skillsInitialMode} initialMode={skillsInitialMode} />
+      </Suspense>
+    )}
+
+    {openSection === 'projects' && <section className="projects-section" id="projects" aria-label="Projects">
       <div className="projects-atmosphere" aria-hidden="true" />
       <div className="projects-content">
         <GradientText
@@ -232,16 +244,24 @@ function App() {
           showBorder
           className="projects-gradient-title"
         >
-          <span>Project Lab</span>
           <span>Selected Work</span>
         </GradientText>
 
         <p className="projects-subtitle">
-          Four projects that best represent how I build, experiment and solve problems.
+          Projects that best represent how I build, experiment and solve problems.
+        </p>
+
+        <p className="projects-lab-intro">
+          <strong>This is a project laboratory,</strong> to interact, experiment,
+          and find out more about each of the following projects.
+        </p>
+
+        <p className="projects-choice-prompt" id="project-choice-prompt">
+          Please choose a project
         </p>
 
         <div className="projects-switcher">
-          <nav className="project-tabs" id="projects-navbar" aria-label="Project selector">
+          <nav className="project-tabs" id="projects-navbar" aria-label="Project selector" aria-describedby="project-choice-prompt">
             {projectItems.map((item, index) => (
               <button
                 className={`project-tab ${activeProjectIndex === index ? 'is-active' : ''}`}
@@ -256,7 +276,7 @@ function App() {
           </nav>
         </div>
 
-        <div className="project-display">
+        {activeProjectIndex !== null && <div className="project-display" key={activeProjectIndex}>
           {activeProjectIndex === 0 ? (
             <HarCaseStudy />
           ) : activeProjectIndex === 1 ? (
@@ -264,10 +284,10 @@ function App() {
           ) : (
             <div className="project-placeholder">
               <p>{projectItems[activeProjectIndex]}</p>
-              <span>Case study coming next.</span>
+              <span>Data Engineering project case study is coming soon</span>
             </div>
           )}
-        </div>
+        </div>}
       </div>
     </section>}
     </main>
