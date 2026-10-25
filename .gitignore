@@ -19,3 +19,9 @@ frontend/dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Data
+/knowledge-base
+
+# Logs
+*.log
