@@ -91,6 +91,7 @@ const Particles = ({
   speed = 0.1,
   particleColors,
   moveParticlesOnHover = false,
+  interactionTarget = '',
   particleHoverFactor = 1,
   alphaParticles = false,
   particleBaseSize = 100,
@@ -106,6 +107,7 @@ const Particles = ({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    const interactionElement = (interactionTarget && container.closest(interactionTarget)) || container;
 
     const renderer = new Renderer({
       dpr: pixelRatio,
@@ -128,15 +130,22 @@ const Particles = ({
     window.addEventListener('resize', resize, false);
     resize();
 
-    const handleMouseMove = e => {
-      const rect = container.getBoundingClientRect();
+    const handlePointerMove = e => {
+      if (e.pointerType === 'touch') return;
+      const rect = interactionElement.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
       mouseRef.current = { x, y };
     };
 
+    const handlePointerLeave = () => {
+      mouseRef.current = { x: 0, y: 0 };
+    };
+
     if (moveParticlesOnHover) {
-      container.addEventListener('mousemove', handleMouseMove);
+      interactionElement.addEventListener('pointermove', handlePointerMove);
+      interactionElement.addEventListener('pointerleave', handlePointerLeave);
     }
 
     const count = particleCount;
@@ -216,7 +225,8 @@ const Particles = ({
     return () => {
       window.removeEventListener('resize', resize);
       if (moveParticlesOnHover) {
-        container.removeEventListener('mousemove', handleMouseMove);
+        interactionElement.removeEventListener('pointermove', handlePointerMove);
+        interactionElement.removeEventListener('pointerleave', handlePointerLeave);
       }
       cancelAnimationFrame(animationFrameId);
       if (container.contains(gl.canvas)) {
@@ -229,6 +239,7 @@ const Particles = ({
     particleSpread,
     speed,
     moveParticlesOnHover,
+    interactionTarget,
     particleHoverFactor,
     alphaParticles,
     particleBaseSize,

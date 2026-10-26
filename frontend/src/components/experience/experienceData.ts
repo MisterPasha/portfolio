@@ -1,5 +1,3 @@
-export const experienceSubtitle = 'From professional kitchens to client projects and collaborative software development. Different environments, but the same drive to solve problems, take responsibility, and deliver.'
-
 export const ownershipMessage = "I don't just enjoy building software. I enjoy taking ownership, solving real problems, and working with people to turn ideas into working products."
 
 export type ExperienceEntry = {

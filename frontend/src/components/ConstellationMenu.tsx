@@ -180,7 +180,6 @@ export default function ConstellationMenu({ onOpenProjects, onOpenSkills, onOpen
 
   return (
     <nav className="constellation-menu" aria-label="Explore Pavel’s portfolio" ref={fieldRef}>
-      <p className="constellation-coordinate" aria-hidden="true">P.J / DEEP SPACE</p>
       <svg className="constellation-threads" aria-hidden="true">
         {connections.map(([from, to], index) => (
           <line key={`${from}-${to}`} ref={element => { linesRef.current[index] = element }} />
@@ -200,7 +199,6 @@ export default function ConstellationMenu({ onOpenProjects, onOpenSkills, onOpen
           <span className="constellation-node-star" aria-hidden="true">✧</span>
         </button>
       ))}
-      <p className="constellation-caption" aria-hidden="true">A quiet place. A few directions.</p>
       <p className="constellation-announcement" role="status">{announcement}</p>
     </nav>
   )

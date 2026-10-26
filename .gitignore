@@ -31,3 +31,6 @@ Thumbs.db
 
 # Personal Notes
 *.md
+
+# agents
+.agents

@@ -6,11 +6,10 @@ import GradientText from '@/components/GradientText'
 import GradientWaves from '@/components/GradientWaves'
 import GradientASCII from '@/components/GradientASCII'
 import ConstellationMenu from '@/components/ConstellationMenu'
-import Particles from '@/components/Particles'
+import AboutSection from '@/components/about/AboutSection'
 import HarCaseStudy from '@/components/har/HarCaseStudy'
 import DigisoftCaseStudy from '@/components/digisoft/DigisoftCaseStudy'
 import PavelBotLoading from '@/components/chat/PavelBotLoading'
-import meImage from '@/assets/me.png'
 
 const SkillAtlas = lazy(() => import('@/components/skills/SkillAtlas'))
 const ExperienceSection = lazy(() => import('@/components/experience/ExperienceSection'))
@@ -23,15 +22,6 @@ const projectItems = [
   'ACTIVITY RECOGNITION',
   'DIGISOFT',
   'DATA PIPELINE',
-]
-const statusRows = [
-  { key: 'name', value: 'Pavel Jermolajev', hint: 'People refer to me as Pav' },
-  { key: 'location', value: 'Brighton, UK' },
-  { key: 'focus', value: 'AI / Data / Software' },
-  { key: 'main_language', value: 'Python' },
-  { key: 'open_to', value: 'graduate & junior roles' },
-  { key: 'currently_building', value: 'this portfolio' },
-  { key: 'tabs_open', value: 'too many' },
 ]
 
 function Portfolio() {
@@ -104,26 +94,27 @@ function Portfolio() {
       }}
     >
       <GradientWaves
-        horizonColor="#cb10f7"
-        waveColor="#363235"
-        crestColor="#ff007e"
+        horizonColor="#7c2d12"
+        waveColor="#fb923c"
+        crestColor="#fef3c7"
         speed={0.4}
-        amplitude={3.0}
-        waveScale={0.6}
-        waveRatio={0.9}
-        swell={40}
-        turbulence={20}
-        tilt={1.11}
-        zoom={0.85}
-        height={7.0}
-        fogDepth={18}
-        detail="medium"
-        brightness={1}
-        opacity={1}
-        grain
-        grainIntensity={0.00}
+        amplitude={3.85}
+        relief={1}
+        lightAngle={-59}
         mouseInteraction
-        parallaxStrength={0.4}
+        swellOnClick
+        waveScale={0.7}
+        waveRatio={0.49}
+        swell={36}
+        turbulence={10.5}
+        tilt={60}
+        zoom={0.75}
+        height={7.1}
+        fogDepth={23}
+        sheen={0.21}
+        grain={0.1}
+        mouseStrength={0.57}
+        intro={false}
       />
 
       <header className="hero-identity geo-regular">
@@ -152,64 +143,7 @@ function Portfolio() {
       </h1>
     </div>
 
-    <section className="about-section" aria-label="About">
-      <div className="about-particles">
-        <Particles
-          particleCount={500}
-          particleSpread={10}
-          speed={0.1}
-          particleColors={["#ff0391", "#8f2285"]}
-          moveParticlesOnHover
-          particleHoverFactor={1}
-          alphaParticles={false}
-          particleBaseSize={100}
-          sizeRandomness={1}
-          cameraDistance={20}
-          disableRotation={false}
-          className=""
-        />
-      </div>
-
-      <div className="about-content">
-        <div className="about-copy">
-          <h2 className="about-heading">About</h2>
-          <p className="about-description">
-            Computer Science & AI graduate working across software, machine
-            learning and data. I like taking ideas from first experiment to
-            something real, useful and deployed.
-          </p>
-
-          <div className="status-panel" aria-label="Pavel current status">
-            <p className="status-command">&gt; pavel.current_status</p>
-
-            <dl className="status-list">
-              {statusRows.map((row) => (
-                <div className="status-row" key={row.key}>
-                  <dt>{row.key}:</dt>
-                  <dd>
-                    {row.hint ? (
-                      <span className="status-value status-value-with-hint">
-                        "{row.value}"
-                        <span className="status-hint" role="tooltip">
-                          {row.hint}
-                        </span>
-                      </span>
-                    ) : (
-                      <span className="status-value">"{row.value}"</span>
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-
-        <div className="about-image-wrap">
-          <img className="about-image" src={meImage} alt="Pavel Jermolajev" />
-        </div>
-      </div>
-
-    </section>
+    <AboutSection />
 
     <div className="ascii-transition" id="portfolio-menu">
       <GradientASCII

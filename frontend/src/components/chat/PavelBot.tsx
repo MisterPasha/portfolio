@@ -9,10 +9,10 @@ import './PavelBot.css'
 
 const STORAGE_KEY = 'pavelbot.conversation.v1'
 const suggestions = [
-  { label: 'The bigger picture', question: 'Tell me about Pavel’s background and what he’s looking for.' },
+  { label: 'The bigger picture', question: 'Tell me about Pavel and what he’s looking for.' },
   { label: 'Projects in practice', question: 'What did Pavel build for the Hi5 project?' },
-  { label: 'AI & machine learning', question: 'How did Pavel tackle sensor misalignment in his dissertation?' },
-  { label: 'Data & cloud', question: 'Which data engineering and AWS projects has Pavel worked on?' },
+  { label: 'AI & machine learning', question: "What is Pavel's experience with AI & ML?" },
+  { label: 'Data & cloud', question: 'Which data engineering and cloud projects has Pavel worked on?' },
 ]
 
 function rememberedConversation() { try { return sessionStorage.getItem(STORAGE_KEY) } catch { return null } }
