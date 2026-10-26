@@ -31,7 +31,7 @@ def visitor(request):
 
 def ip_key(request):
     # Only trust a single-IP header if an origin-protecting proxy overwrites it.
-    header = os.getenv("CHAT_TRUSTED_IP_HEADER", "")
+    header = os.getenv("CHAT_TRUSTED_IP_HEADER", "HTTP_X_VERCEL_FORWARDED_FOR" if settings.ON_VERCEL else "")
     raw = request.META.get(header, "") if header else request.META.get("REMOTE_ADDR", "")
     try:
         address = ipaddress.ip_address(raw)

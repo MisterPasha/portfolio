@@ -9,7 +9,8 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   server: {
-    proxy: {
+    // Vercel routes /api to Django itself. This proxy is only for standalone Vite.
+    proxy: process.env.VERCEL ? undefined : {
       '/api': 'http://127.0.0.1:8000',
     },
   },

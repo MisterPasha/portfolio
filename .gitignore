@@ -7,6 +7,8 @@ __pycache__/
 # Node
 frontend/node_modules/
 frontend/dist/
+backend/staticfiles/
+.vercel/
 
 # Environment variables
 .env
@@ -31,6 +33,11 @@ Thumbs.db
 
 # Personal Notes
 *.md
+./*.md
 
 # agents
 .agents
+
+# Deployment documentation and a placeholder-only environment template.
+!/DEPLOYMENT.md
+!/backend/.env.example

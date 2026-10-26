@@ -1,0 +1,13 @@
+**/.venv/**
+**/node_modules/**
+**/__pycache__/**
+**/.env
+**/.env.*
+**/*.sqlite3
+**/*.ipynb
+**/.agents/**
+**/.codex/**
+backend/sripts/**
+backend/sql/**
+knowledge-base/**
+frontend/dist/**

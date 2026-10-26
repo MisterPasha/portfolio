@@ -16,7 +16,9 @@ from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / '.env')
+ON_VERCEL = os.getenv('VERCEL') == '1' and os.getenv('VERCEL_ENV') != 'development'
+if not ON_VERCEL:
+    load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,10 +28,19 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-local-development-only')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DJANGO_DEBUG', 'true').lower() == 'true'
+DEBUG = False if ON_VERCEL else os.getenv('DJANGO_DEBUG', 'true').lower() == 'true'
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,[::1]').split(',')
-CSRF_TRUSTED_ORIGINS = [value for value in os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',') if value]
+ALLOWED_HOSTS = [value.strip() for value in os.getenv(
+    'DJANGO_ALLOWED_HOSTS', '' if ON_VERCEL else 'localhost,127.0.0.1,[::1]'
+).split(',') if value.strip()]
+if ON_VERCEL:
+    # Exact deployment hosts, rather than trusting every *.vercel.app site.
+    for variable in ('VERCEL_URL', 'VERCEL_BRANCH_URL', 'VERCEL_PROJECT_PRODUCTION_URL'):
+        host = os.getenv(variable)
+        if host and host not in ALLOWED_HOSTS:
+            ALLOWED_HOSTS.append(host)
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = [value.strip() for value in os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',') if value.strip()]
 DATA_UPLOAD_MAX_MEMORY_SIZE = 8192
 CSRF_COOKIE_SECURE = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
@@ -126,6 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Email

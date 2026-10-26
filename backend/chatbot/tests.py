@@ -1,13 +1,47 @@
 import json
+import os
+import runpy
 import uuid
 from datetime import datetime, timezone
 from decimal import Decimal
+from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 from django.test import Client, SimpleTestCase, override_settings
 
 from . import config as cfg, rag, safety, store, views
+
+
+class DeploymentSettingsTests(SimpleTestCase):
+    def settings_for(self, environment):
+        with patch.dict(os.environ, environment, clear=True), patch('dotenv.load_dotenv'):
+            return runpy.run_path(str(Path(__file__).resolve().parents[1] / 'config' / 'settings.py'))
+
+    def test_vercel_deployment_forces_secure_defaults_and_exact_hosts(self):
+        configured = self.settings_for({
+            'VERCEL': '1', 'VERCEL_ENV': 'preview', 'DJANGO_DEBUG': 'true',
+            'DJANGO_SECRET_KEY': 'test-only-deployment-secret',
+            'VERCEL_URL': 'portfolio-preview.vercel.app',
+            'DJANGO_ALLOWED_HOSTS': ' portfolio.example, ',
+        })
+        self.assertFalse(configured['DEBUG'])
+        self.assertTrue(configured['CSRF_COOKIE_SECURE'])
+        self.assertTrue(configured['SESSION_COOKIE_SECURE'])
+        self.assertEqual(configured['ALLOWED_HOSTS'], ['portfolio.example', 'portfolio-preview.vercel.app'])
+        self.assertEqual(configured['SECURE_PROXY_SSL_HEADER'], ('HTTP_X_FORWARDED_PROTO', 'https'))
+
+    def test_vercel_deployment_requires_a_secret(self):
+        with self.assertRaises(RuntimeError):
+            self.settings_for({'VERCEL': '1', 'VERCEL_ENV': 'production'})
+
+    def test_vercel_local_development_keeps_http_working(self):
+        configured = self.settings_for({'VERCEL': '1', 'VERCEL_ENV': 'development'})
+        self.assertTrue(configured['DEBUG'])
+        self.assertFalse(configured['ON_VERCEL'])
+        self.assertFalse(configured['CSRF_COOKIE_SECURE'])
+        self.assertIn('localhost', configured['ALLOWED_HOSTS'])
+        self.assertNotIn('SECURE_PROXY_SSL_HEADER', configured)
 
 
 @override_settings(ALLOWED_HOSTS=['testserver'])
@@ -24,6 +58,37 @@ class EndpointTests(SimpleTestCase):
     def test_csrf_is_required(self):
         response = self.client.post('/api/chat/message/', '{}', content_type='application/json')
         self.assertEqual(response.status_code, 403)
+
+    @override_settings(DEBUG=False, CSRF_COOKIE_SECURE=True,
+                       SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO', 'https'))
+    def test_https_proxy_preserves_csrf_checks_and_secure_cookies(self):
+        with patch.object(views, 'public_ready', return_value=True):
+            response = self.client.get('/api/chat/session/', HTTP_HOST='testserver', HTTP_X_FORWARDED_PROTO='https')
+        self.assertTrue(response.cookies[cfg.COOKIE]['secure'])
+        self.assertTrue(response.cookies['csrftoken']['secure'])
+        body = json.dumps({'question': 'Hi', 'request_id': str(uuid.uuid4())})
+        headers = {'HTTP_X_CSRFTOKEN': response.json()['csrf_token'],
+                   'HTTP_X_FORWARDED_PROTO': 'https', 'HTTP_HOST': 'testserver'}
+        with patch.object(views, 'public_ready', return_value=False):
+            response = self.client.post('/api/chat/message/', body, content_type='application/json',
+                                        HTTP_ORIGIN='https://testserver', **headers)
+        self.assertEqual(response.status_code, 503)  # Passed CSRF; provider is intentionally unavailable.
+        response = self.client.post('/api/chat/message/', body, content_type='application/json',
+                                    HTTP_ORIGIN='https://another-site.example', **headers)
+        self.assertEqual(response.status_code, 403)
+
+    @override_settings(ON_VERCEL=True)
+    def test_vercel_rate_limit_uses_platform_ip_header(self):
+        request = SimpleNamespace(META={'HTTP_X_VERCEL_FORWARDED_FOR': '203.0.113.7',
+                                        'HTTP_X_FORWARDED_FOR': '198.51.100.9', 'REMOTE_ADDR': '127.0.0.1'})
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(views.ip_key(request), store.identity('ip:203.0.113.7'))
+
+    @override_settings(ON_VERCEL=False)
+    def test_local_rate_limit_does_not_trust_forwarded_ip_headers(self):
+        request = SimpleNamespace(META={'HTTP_X_VERCEL_FORWARDED_FOR': '203.0.113.7', 'REMOTE_ADDR': '127.0.0.1'})
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(views.ip_key(request), store.identity('ip:127.0.0.1'))
 
     def test_browser_cannot_supply_history_or_model(self):
         with patch.object(store, 'admit') as admit:
