@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useReducedMotion } from 'motion/react'
 import Particles from '@/components/Particles'
-import meImage from '@/assets/me.png'
+import meImage from '@/assets/me.PNG?url'
 import './AboutSection.css'
 
 const statusRows = [
