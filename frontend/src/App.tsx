@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import { animate } from 'motion'
 import './App.css'
 import FuzzyText from '@/components/FuzzyText'
@@ -9,11 +9,15 @@ import ConstellationMenu from '@/components/ConstellationMenu'
 import Particles from '@/components/Particles'
 import HarCaseStudy from '@/components/har/HarCaseStudy'
 import DigisoftCaseStudy from '@/components/digisoft/DigisoftCaseStudy'
+import PavelBotLoading from '@/components/chat/PavelBotLoading'
 import meImage from '@/assets/me.png'
 
 const SkillAtlas = lazy(() => import('@/components/skills/SkillAtlas'))
 const ExperienceSection = lazy(() => import('@/components/experience/ExperienceSection'))
 const ContactSection = lazy(() => import('@/components/contact/ContactSection'))
+const PavelBot = lazy(() => import('@/components/chat/PavelBot'))
+
+type PortfolioSection = 'projects' | 'skills' | 'experience' | 'contact' | 'chat'
 
 const projectItems = [
   'ACTIVITY RECOGNITION',
@@ -30,21 +34,28 @@ const statusRows = [
   { key: 'tabs_open', value: 'too many' },
 ]
 
-function App() {
+function Portfolio() {
   const [activeProjectIndex, setActiveProjectIndex] = useState<number | null>(null)
-  const [openSection, setOpenSection] = useState<'projects' | 'skills' | 'experience' | 'contact' | null>(null)
+  const [openSection, setOpenSection] = useState<PortfolioSection | null>(null)
+  const [scrollTarget, setScrollTarget] = useState<PortfolioSection | 'portfolio-menu' | null>(null)
   const [sectionOpenRequest, setSectionOpenRequest] = useState(0)
   const [skillsInitialMode, setSkillsInitialMode] = useState<'domain' | 'project'>('domain')
 
-  const openMenuSection = (section: 'projects' | 'skills' | 'experience' | 'contact', skillsMode: 'domain' | 'project' = 'domain') => {
+  const openMenuSection = (section: PortfolioSection, skillsMode: 'domain' | 'project' = 'domain') => {
     if (section === 'skills') setSkillsInitialMode(skillsMode)
     setOpenSection(section)
+    setScrollTarget(section)
     setSectionOpenRequest(request => request + 1)
   }
 
+  const backToMenu = useCallback(() => {
+    setScrollTarget('portfolio-menu')
+    setSectionOpenRequest(request => request + 1)
+  }, [])
+
   useEffect(() => {
-    if (!sectionOpenRequest || !openSection) return
-    const section = document.getElementById(openSection)
+    if (!sectionOpenRequest || !scrollTarget) return
+    const section = document.getElementById(scrollTarget)
     if (!section) return
     const destination = section.getBoundingClientRect().top + window.scrollY
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -69,7 +80,7 @@ function App() {
       window.removeEventListener('touchstart', stop)
       window.removeEventListener('keydown', onKey)
     }
-  }, [sectionOpenRequest, openSection])
+  }, [sectionOpenRequest, scrollTarget])
 
   const handleProjectTabClick = (index: number) => {
     setActiveProjectIndex(index)
@@ -200,7 +211,7 @@ function App() {
 
     </section>
 
-    <div className="ascii-transition">
+    <div className="ascii-transition" id="portfolio-menu">
       <GradientASCII
         className="ascii-transition-art"
         aria-hidden="true"
@@ -214,8 +225,16 @@ function App() {
         flicker={0.53}
         grain={0}
       />
-      <ConstellationMenu onOpenProjects={() => openMenuSection('projects')} onOpenSkills={() => openMenuSection('skills')} onOpenExperience={() => openMenuSection('experience')} onOpenContact={() => openMenuSection('contact')} />
+      <ConstellationMenu onOpenProjects={() => openMenuSection('projects')} onOpenSkills={() => openMenuSection('skills')} onOpenExperience={() => openMenuSection('experience')} onOpenContact={() => openMenuSection('contact')} onOpenChat={() => openMenuSection('chat')} />
     </div>
+
+    {openSection === 'chat' && (
+      <section id="chat" className="chat-section" aria-label="PAVEL.BOT">
+        <Suspense fallback={<PavelBotLoading />}>
+          <PavelBot onBackToMenu={backToMenu} />
+        </Suspense>
+      </section>
+    )}
 
     {openSection === 'contact' && (
       <Suspense fallback={<section id="contact" className="skills-loading" aria-busy="true">Opening Contact Me…</section>}>
@@ -294,4 +313,9 @@ function App() {
   )
 }
 
-export default App
+export default function App() {
+  if (window.location.pathname.replace(/\/$/, '') === '/pavel-bot') {
+    return <Suspense fallback={<PavelBotLoading />}><PavelBot /></Suspense>
+  }
+  return <Portfolio />
+}

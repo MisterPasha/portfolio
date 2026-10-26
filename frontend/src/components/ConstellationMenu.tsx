@@ -6,7 +6,7 @@ const destinations = [
   { label: 'My Experience', target: 'experience', x: 73, y: 19 },
   { label: 'Selected Work', target: 'projects', x: 50, y: 51 },
   { label: 'Contact Me', target: 'contact', x: 25, y: 77 },
-  { label: 'Pavel-Bot', target: 'chat', x: 76, y: 73 },
+  { label: 'PAVEL.BOT', target: 'chat', x: 76, y: 73 },
 ]
 
 // A randomized spanning tree keeps every destination connected with only four threads.
@@ -24,11 +24,12 @@ function makeConnections() {
   return edges
 }
 
-export default function ConstellationMenu({ onOpenProjects, onOpenSkills, onOpenExperience, onOpenContact }: {
+export default function ConstellationMenu({ onOpenProjects, onOpenSkills, onOpenExperience, onOpenContact, onOpenChat }: {
   onOpenProjects: () => void
   onOpenSkills: () => void
   onOpenExperience: () => void
   onOpenContact: () => void
+  onOpenChat: () => void
 }) {
   const fieldRef = useRef<HTMLElement>(null)
   const nodesRef = useRef<(HTMLButtonElement | null)[]>([])
@@ -145,6 +146,11 @@ export default function ConstellationMenu({ onOpenProjects, onOpenSkills, onOpen
   }, [connections])
 
   const navigate = (label: string, target: string) => {
+    if (target === 'chat') {
+      onOpenChat()
+      setAnnouncement('')
+      return
+    }
     if (target === 'contact') {
       onOpenContact()
       setAnnouncement('')

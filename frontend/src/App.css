@@ -277,6 +277,13 @@
   font: 14px "Quantico", sans-serif;
 }
 
+.chat-section {
+  position: relative;
+  z-index: 2;
+  min-height: 100dvh;
+  background: #191b22;
+}
+
 .projects-section::before {
   content: "";
   position: absolute;
