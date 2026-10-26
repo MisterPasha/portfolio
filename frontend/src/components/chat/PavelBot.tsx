@@ -82,9 +82,7 @@ export default function PavelBot({ onBackToMenu }: { onBackToMenu?: () => void }
 
   useEffect(() => {
     mounted.current = true
-    const previousTitle = document.title
-    document.title = 'PAVEL.BOT · Pavel Jermolajev'
-    return () => { mounted.current = false; abort.current?.abort(); document.title = previousTitle }
+    return () => { mounted.current = false; abort.current?.abort() }
   }, [])
 
   useEffect(() => {
