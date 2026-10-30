@@ -296,7 +296,7 @@ export default function SkillAtlas({ initialMode = 'domain' }: { initialMode?: M
               </div>
             </div>
           </header>
-          <div className="atlas-explorer" ref={explorerRef}>
+          <div className="atlas-explorer" id="skills-cards" ref={explorerRef}>
             <div className="atlas-controls">
               <div className="atlas-perspective" role="group" aria-label="Skills perspective">
                 <button type="button" aria-pressed={mode === 'domain'} onClick={() => { setMode('domain'); setQuery('') }}><span aria-hidden="true">◈</span> Domain <span aria-hidden="true">→</span> skills</button>

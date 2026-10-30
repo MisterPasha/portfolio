@@ -59,7 +59,7 @@
 .about-heading {
   margin: 0;
   font-family: "Tektur", system-ui;
-  font-size: clamp(6rem, 10vw, 9.5rem);
+  font-size: clamp(3.6rem, 6vw, 5.7rem);
   font-weight: 500;
   line-height: 0.88;
   letter-spacing: -0.065em;
@@ -194,6 +194,32 @@
   color: var(--about-muted);
 }
 
+.about-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-quick-links button {
+  padding: 6px 10px;
+  border: 1px solid rgb(188 167 139 / 35%);
+  border-radius: 6px;
+  background: rgb(245 158 11 / 6%);
+  color: var(--about-ivory);
+  font: inherit;
+  cursor: pointer;
+}
+
+.about-quick-links button:hover {
+  border-color: var(--about-amber);
+  background: rgb(245 158 11 / 14%);
+}
+
+.about-quick-links button:focus-visible {
+  outline: 2px solid var(--about-amber);
+  outline-offset: 3px;
+}
+
 .status-value {
   position: relative;
   color: var(--about-ivory);
@@ -249,7 +275,7 @@
   }
 
   .about-heading {
-    font-size: clamp(5rem, 10vw, 7rem);
+    font-size: clamp(3rem, 6vw, 4.2rem);
   }
 
   .status-row {
@@ -277,7 +303,7 @@
   }
 
   .about-heading {
-    font-size: clamp(4.75rem, 17vw, 7rem);
+    font-size: clamp(2.85rem, 10.2vw, 4.2rem);
   }
 
   .about-description {

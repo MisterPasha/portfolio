@@ -9,12 +9,17 @@ const statusRows = [
   { key: 'location', value: 'Brighton, UK' },
   { key: 'focus', value: 'AI / Data / Software' },
   { key: 'main_language', value: 'Python' },
-  { key: 'open_to', value: 'graduate & junior roles' },
-  { key: 'currently_building', value: 'Data Engineering project' },
-  { key: 'tabs_open', value: 'too many' },
+  { key: 'top_quality', value: 'Very curious and proactive' },
+  { key: 'currently_building', value: 'Business Location Intelligence Platform' },
 ]
 
-export default function AboutSection() {
+type AboutSectionProps = {
+  onOpenSkills: () => void
+  onOpenProjects: () => void
+  onOpenChat: () => void
+}
+
+export default function AboutSection({ onOpenSkills, onOpenProjects, onOpenChat }: AboutSectionProps) {
   const reducedMotion = useReducedMotion()
   const [showNameHint, setShowNameHint] = useState(false)
 
@@ -40,11 +45,11 @@ export default function AboutSection() {
 
       <div className="about-content">
         <header className="about-intro">
-          <h2 className="about-heading" id="about-heading">About</h2>
+          <h2 className="about-heading" id="about-heading">Data &amp; Software Engineer</h2>
           <p className="about-description">
-            Computer Science & AI graduate working across software, machine
-            learning and data. I like taking ideas from first experiment to
-            something real, useful and deployed.
+            I build end-to-end software systems, connect data and services through APIs,
+            develop data pipelines and integrate AI into applications. I enjoy looking
+            at the bigger picture and understanding how different technologies fit together
           </p>
         </header>
 
@@ -97,6 +102,14 @@ export default function AboutSection() {
                 </dd>
               </div>
             ))}
+            <div className="status-row" data-status="quick_links">
+              <dt>quick_links:</dt>
+              <dd className="about-quick-links">
+                <button type="button" onClick={onOpenSkills}>see skills</button>
+                <button type="button" onClick={onOpenProjects}>see projects</button>
+                <button type="button" onClick={onOpenChat}>ask assistant</button>
+              </dd>
+            </div>
           </dl>
         </div>
       </div>

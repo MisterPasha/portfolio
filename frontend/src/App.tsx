@@ -27,14 +27,18 @@ const projectItems = [
 function Portfolio() {
   const [activeProjectIndex, setActiveProjectIndex] = useState<number | null>(null)
   const [openSection, setOpenSection] = useState<PortfolioSection | null>(null)
-  const [scrollTarget, setScrollTarget] = useState<PortfolioSection | 'portfolio-menu' | null>(null)
+  const [scrollTarget, setScrollTarget] = useState<PortfolioSection | 'portfolio-menu' | 'skills-cards' | null>(null)
   const [sectionOpenRequest, setSectionOpenRequest] = useState(0)
   const [skillsInitialMode, setSkillsInitialMode] = useState<'domain' | 'project'>('domain')
+  const [skillsOpenRequest, setSkillsOpenRequest] = useState(0)
 
-  const openMenuSection = (section: PortfolioSection, skillsMode: 'domain' | 'project' = 'domain') => {
-    if (section === 'skills') setSkillsInitialMode(skillsMode)
+  const openMenuSection = (section: PortfolioSection, skillsMode: 'domain' | 'project' = 'domain', scrollToCards = false) => {
+    if (section === 'skills') {
+      setSkillsInitialMode(skillsMode)
+      setSkillsOpenRequest(request => request + 1)
+    }
     setOpenSection(section)
-    setScrollTarget(section)
+    setScrollTarget(section === 'skills' && scrollToCards ? 'skills-cards' : section)
     setSectionOpenRequest(request => request + 1)
   }
 
@@ -45,30 +49,44 @@ function Portfolio() {
 
   useEffect(() => {
     if (!sectionOpenRequest || !scrollTarget) return
-    const section = document.getElementById(scrollTarget)
-    if (!section) return
-    const destination = section.getBoundingClientRect().top + window.scrollY
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      window.scrollTo(0, destination)
-      return
+    let cleanupScroll: (() => void) | undefined
+    const startScroll = () => {
+      const section = document.getElementById(scrollTarget)
+      if (!section) return false
+      const offset = parseFloat(window.getComputedStyle(section).scrollMarginTop) || 0
+      const destination = section.getBoundingClientRect().top + window.scrollY - offset
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.scrollTo(0, destination)
+        return true
+      }
+      const scroll = animate(window.scrollY, destination, {
+        duration: 1.8,
+        ease: [0.22, 1, 0.36, 1],
+        onUpdate: value => window.scrollTo(0, value),
+      })
+      const stop = () => scroll.stop()
+      const onKey = (event: KeyboardEvent) => {
+        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) stop()
+      }
+      window.addEventListener('wheel', stop, { passive: true })
+      window.addEventListener('touchstart', stop, { passive: true })
+      window.addEventListener('keydown', onKey)
+      cleanupScroll = () => {
+        stop()
+        window.removeEventListener('wheel', stop)
+        window.removeEventListener('touchstart', stop)
+        window.removeEventListener('keydown', onKey)
+      }
+      return true
     }
-    const scroll = animate(window.scrollY, destination, {
-      duration: 1.8,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: value => window.scrollTo(0, value),
+    // The card list may arrive after the lazy-loaded atlas finishes loading.
+    const observer = new MutationObserver(() => {
+      if (startScroll()) observer.disconnect()
     })
-    const stop = () => scroll.stop()
-    const onKey = (event: KeyboardEvent) => {
-      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) stop()
-    }
-    window.addEventListener('wheel', stop, { passive: true })
-    window.addEventListener('touchstart', stop, { passive: true })
-    window.addEventListener('keydown', onKey)
+    if (!startScroll()) observer.observe(document.body, { childList: true, subtree: true })
     return () => {
-      stop()
-      window.removeEventListener('wheel', stop)
-      window.removeEventListener('touchstart', stop)
-      window.removeEventListener('keydown', onKey)
+      observer.disconnect()
+      cleanupScroll?.()
     }
   }, [sectionOpenRequest, scrollTarget])
 
@@ -143,7 +161,11 @@ function Portfolio() {
       </h1>
     </div>
 
-    <AboutSection />
+    <AboutSection
+      onOpenSkills={() => openMenuSection('skills', 'domain', true)}
+      onOpenProjects={() => openMenuSection('skills', 'project', true)}
+      onOpenChat={() => openMenuSection('chat')}
+    />
 
     <div className="ascii-transition" id="portfolio-menu">
       <GradientASCII
@@ -184,7 +206,7 @@ function Portfolio() {
 
     {openSection === 'skills' && (
       <Suspense fallback={<section id="skills" className="skills-loading" aria-busy="true">Opening the atlas…</section>}>
-        <SkillAtlas key={skillsInitialMode} initialMode={skillsInitialMode} />
+        <SkillAtlas key={skillsOpenRequest} initialMode={skillsInitialMode} />
       </Suspense>
     )}
 
